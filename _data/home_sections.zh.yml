@@ -1,14 +1,14 @@
 internships:
   - company: 百度
     company_logo: /assets/img/logos/baidu.svg
-    team: 伐谋 Agent
+    team: 伐谋智能体
     team_logo: /assets/img/logos/famou.png
     team_url: https://cloud.baidu.com/product/famou.html
-    role: Agent 算法研究员（Summer Camp 人才计划）
+    role: Agent 算法研究实习生（Summer Camp 人才计划）
     location: 北京
     period: 2026 年 5 月 – 至今
     bullets:
-      - 从事科研智能体与自进化 Agent 研究。
+      - 从事自动科研智能体与递归自我改进（RSI）研究。
       - "导师：[李安南](https://openreview.net/profile?id=%7EAnnan_Li4)、[葛增乐](https://dblp.org/pid/398/9116.html)。"
 
   - company: 美团
@@ -36,7 +36,7 @@ internships:
       - "导师：[陶玮](https://scholar.google.com/citations?user=3RG4Lf4AAAAJ)。"
 
 education:
-  - institution: 清华大学
+  - institution: 清华大学（THU）
     logo: /assets/img/logos/tsinghua.svg
     degree: 计算机技术硕士，深圳国际研究生院
     location: 深圳
@@ -51,24 +51,37 @@ education:
     location: 徐州
     period: 2019 年 9 月 – 2024 年 7 月
     bullets:
-      - "📐 本科专业方向为计算、控制与优化，导师为[邵虎教授](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)。"
+      - "📐 专业方向为计算、控制与优化，导师为[邵虎教授](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)。"
       - 系统学习数学、分析、概率统计、优化、信息论、操作系统与数据库等基础课程。
+
+  - institution: 绍兴市第一中学
+    logo: /assets/img/logos/shaoxing-no1.png
+    degree: 高中
+    location: 绍兴
+    period: 2016 年 2 月 – 2019 年 7 月
+    bullets:
+      - 高考选科为物理、生物、技术（含通用技术和信息技术）。
+      - "系统学习物理竞赛知识，导师为[黄伟中老师](https://baike.baidu.com/item/%E9%BB%84%E4%BC%9F%E4%B8%AD/9753976)，获中国物理竞赛浙江赛区三等奖。"
 
 honors:
   - title: 🥇 中国矿业大学校一等奖学金
     date: 2024 年
-    summary: 奖学金排名 2 / 124。
+    summary: 奖学金评定中位列第 2（共 124 人）。
   - title: 🏅 国际数学建模竞赛一等奖
     date: 2021 年
     summary: 由 COMAP 颁发；证书 [2115775](https://www.comap-math.org/mcm/2021Certs/2115775.pdf)。
   - title: 🥈 全国大学生数学竞赛（CMC）A 类二等奖
     date: 2023 年
-    summary: 由中国数学会组织的全国性大学生数学竞赛。
+    summary: 由中国数学会主办。
 
 academic_service:
+  - title: 学术会议审稿人
+    date: 2025 年 5 月 – 2026 年 6 月
+    summary: "📝 ACL Rolling Review（ARR）：2025 年 5 月、2025 年 10 月和 2026 年 5 月；AgentSkills’26；DL4C’26。"
+
   - title: 清华大学《知识工程》课程助教
     date: 2026 年 2 月 – 2026 年 6 月
     summary: 🧑‍🏫 围绕生成式知识工程、RAG、幻觉、知识编辑、Agents、多模态与可信 AI 重构课程材料。
   - title: 中国矿业大学数学建模协会主席
     date: 2022 年 9 月 – 2023 年 7 月
-    summary: 🤝 组织 16,000+ 人参与的[五一数学建模竞赛（51MCM）](https://51mcm.cumt.edu.cn/)，并负责校内竞赛与国赛培训。
+    summary: 🤝 组织逾 1.6 万人参加的[五一数学建模竞赛（51MCM）](https://51mcm.cumt.edu.cn/)，并负责校内竞赛与国赛培训。

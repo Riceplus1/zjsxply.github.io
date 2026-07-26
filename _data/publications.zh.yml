@@ -1,7 +1,7 @@
 pan2026naturallanguageagentharnesses:
   title: 自然语言的 Agent Harness
   award_name: 社区关注
-  award: 登顶 alphaXiv 热榜第一，入选 DAIR.AI 每周十佳论文和 [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913) 一周 Top AI/ML 研究论文（总共 7 篇），并在 X 上获得 55 万+ 浏览。
+  award: 登顶 alphaXiv 热榜，入选 DAIR.AI 每周十佳论文和 [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913) 一周 Top AI/ML 研究论文（共 7 篇），并在 X 上获得逾 55 万次浏览。
   abstract: Agent 的性能会被其所处的 harness 显著塑造。这里的 harness 指围绕模型、负责组织一次任务运行的外部执行系统。但这套逻辑通常埋藏在紧耦合的控制器代码中，因此很难被检查、比较、迁移和消融。本文追问：Agent harness 这一可复用的设计模式，能否被表示为一种可执行的自然语言对象？我们提出自然语言的 Agent Harness（NLAHs），即描述运行级 harness 策略的可编辑文档；同时提出 Intelligent Harness Runtime（IHR），作为共享运行时，将这些文档解释为 Agent 调用、任务交接、状态更新、验证关卡和产物契约。在代码、终端使用和计算机使用基准上，由 IHR 执行的 NLAH 在任务结果上与代码实现和 prompt 化实现相当，同时暴露出更短的静态 harness 策略。模块消融进一步表明，显式的 harness 模块具有可分析性。这些结果说明，Agent harness 可以从模型周围的偶然性胶水层，转变为一种可被科学研究的表示对象。
   translation: https://hjfy.top/arxiv/2603.25723
 

@@ -6,4 +6,4 @@ related_posts: false
 lang: zh
 ---
 
-🔥 [NLAH](https://arxiv.org/abs/2603.25723) 登顶 [alphaXiv 热榜第一](https://www.alphaxiv.org/abs/2603.25723)，并在 X 上获得 55 万+浏览。
+🔥 [NLAH](https://arxiv.org/abs/2603.25723) 登顶 [alphaXiv 热榜](https://www.alphaxiv.org/abs/2603.25723)，并在 X 上获得逾 55 万次浏览。

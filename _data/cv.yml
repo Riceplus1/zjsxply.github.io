@@ -46,6 +46,16 @@ cv:
           - "Completed the Computation, Control, and Optimization track under the supervision of [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)."
           - Built a strong foundation in mathematics, analysis, probability and statistics, optimization, information theory, operating systems, and databases.
 
+      - institution: Shaoxing No. 1 High School
+        location: Shaoxing
+        area: Physics, Biology, and Technology
+        studyType: High School
+        start_date: Feb 2016
+        end_date: Jul 2019
+        highlights:
+          - "My selected Gaokao subjects were physics, biology, and technology (including general technology and information technology)."
+          - "Systematically studied physics olympiad topics under the guidance of [Wei-Zhong Huang](https://baike.baidu.com/item/%E9%BB%84%E4%BC%9F%E4%B8%AD/9753976) and won third prize in the Zhejiang Division of the Chinese Physics Olympiad."
+
     Experience:
       - company: Baidu
         position: Agent Algorithm Researcher (Summer Camp Talent Program)
@@ -164,7 +174,7 @@ cv:
       - title: First-Class Scholarship, China University of Mining and Technology
         date: 2024
         awarder: China University of Mining and Technology
-        summary: "Scholarship rank: 2 / 124."
+        summary: Ranked 2nd out of 124 in the scholarship assessment.
       - title: First Prize, International Mathematical Modeling Contest
         date: 2023
         awarder: International Mathematical Modeling Contest

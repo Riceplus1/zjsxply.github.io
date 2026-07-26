@@ -4,11 +4,11 @@ internships:
     team: Famou Agent
     team_logo: /assets/img/logos/famou.png
     team_url: https://cloud.baidu.com/product/famou.html
-    role: Agent Algorithm Researcher (Summer Camp Talent Program)
+    role: Research Intern, Agent Algorithms (Summer Camp Talent Program)
     location: Beijing, China
     period: May 2026 – Present
     bullets:
-      - Research Intern on AI research agents and self-evolving agents.
+      - Research Intern on AutoResearch agents and Recursive Self-Improvement.
       - "Mentors: [Annan Li](https://openreview.net/profile?id=%7EAnnan_Li4), [Zengle Ge](https://dblp.org/pid/398/9116.html)."
 
   - company: Meituan
@@ -54,10 +54,19 @@ education:
       - "📐 Completed the Computation, Control, and Optimization track under the supervision of [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)."
       - Built a strong foundation in mathematics, analysis, probability and statistics, optimization, information theory, operating systems, and databases.
 
+  - institution: Shaoxing No. 1 High School
+    logo: /assets/img/logos/shaoxing-no1.png
+    degree: High School
+    location: Shaoxing, China
+    period: Feb 2016 – Jul 2019
+    bullets:
+      - My selected Gaokao subjects were physics, biology, and technology (including general technology and information technology).
+      - "Systematically studied physics olympiad topics under the guidance of [Wei-Zhong Huang](https://baike.baidu.com/item/%E9%BB%84%E4%BC%9F%E4%B8%AD/9753976) and won third prize in the Zhejiang Division of the Chinese Physics Olympiad."
+
 honors:
   - title: 🥇 First-Class Scholarship, China University of Mining and Technology (CUMT)
     date: 2024
-    summary: "Scholarship rank: 2 / 124."
+    summary: Ranked 2nd out of 124 in the scholarship assessment.
   - title: 🏅 Meritorious Winner, The Mathematical Contest in Modeling (MCM)
     date: 2021
     summary: Awarded by COMAP; certificate [2115775](https://www.comap-math.org/mcm/2021Certs/2115775.pdf).
@@ -66,6 +75,10 @@ honors:
     summary: National college mathematics competition organized by the Chinese Mathematical Society.
 
 academic_service:
+  - title: Academic Conference Reviewer
+    date: May 2025 – Jun 2026
+    summary: "📝 ACL Rolling Review (ARR): May 2025, October 2025, and May 2026; AgentSkills’26; and DL4C’26."
+
   - title: Teaching Assistant, Knowledge Engineering, Tsinghua University
     date: Feb 2026 – Jun 2026
     summary: 🧑‍🏫 Redesigned course materials around generative knowledge engineering, RAG, hallucinations, knowledge editing, agents, multimodality, and trustworthy AI.

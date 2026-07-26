@@ -6,4 +6,4 @@ related_posts: false
 lang: en
 ---
 
-🎉 [CATArena](https://arxiv.org/abs/2510.26852) accepted at **ICML 2026**!
+🎉 [CATArena](https://arxiv.org/abs/2510.26852) was accepted to **ICML 2026**!

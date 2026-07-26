@@ -109,7 +109,7 @@
 {% assign tooltip_separator = ': ' %}
 {% assign tooltip_delimiter = '; ' %}
 {% if current_lang == 'zh' %}
-  {% assign publication_zh = site.data.publications.zh[entry.key] %}
+  {% assign publication_zh = site.data.publicationszh[entry.key] %}
   {% assign abstract_label = '摘要' %}
   {% assign awarded_label = '获奖' %}
   {% assign bibtex_label = '引用' %}
@@ -466,7 +466,9 @@
             {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?cites=' | append: display_citations_google_ids %}
           {% elsif display_arxiv_id %}
             {% assign display_scholar_lookup_arxiv_id = display_arxiv_id | remove: 'arXiv:' | remove: 'arxiv:' | strip | url_encode %}
-            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar_lookup?arxiv_id=' | append: display_scholar_lookup_arxiv_id %}
+            {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar_lookup?arxiv_id='
+              | append: display_scholar_lookup_arxiv_id
+            %}
           {% else %}
             {% assign display_scholar_citation_url = 'https://scholar.google.com/scholar?q=' | append: entry.title | url_encode %}
           {% endif %}

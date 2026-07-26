@@ -14,7 +14,7 @@ profile:
   image_circular: false
   more_info: >
     <p>M.S. Student @ SIGS, THU</p>
-    <p>Coding Agent; Harness Engineering; Long-Horizon Agent</p>
+    <p>Insights · Creativity · Harnesses · Rubrics for LLM Agents</p>
     <p>Shenzhen, China</p>
 
 selected_papers: true
@@ -30,20 +30,19 @@ latest_posts:
   enabled: false
 ---
 
-I am currently a second-year master's student in Computer Technology at [Shenzhen International Graduate School (SIGS)](https://www.sigs.tsinghua.edu.cn/en/), [Tsinghua University (THU)](https://www.tsinghua.edu.cn/en/), advised by [Prof. Hai-Tao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
-I earned my B.S. in Mathematics and Applied Mathematics from [China University of Mining and Technology (CUMT)](https://en.cumt.edu.cn/), advised by [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm).
+I am a second-year master’s student in Computer Technology at [Tsinghua SIGS](https://www.sigs.tsinghua.edu.cn/en/), advised by [Prof. Hai-Tao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ). My educational background spans four foundational disciplines—physics, mathematics, computer science, and artificial intelligence.
 
-I'm currently an Agent Algorithm Researcher (Summer Camp Talent Program) at Baidu, working on [Famou Agent for scientific research and self-evolution](https://cloud.baidu.com/product/famou.html), currently the #1 agent on the [MLE-Bench](https://github.com/openai/mle-bench) public leaderboard.
-Previously, I was a research intern at Meituan's [LongCat LLM Team](https://github.com/meituan-longcat), where I worked on coding-agent evaluation, and at Tencent's [LightSpeed Studios](https://www.lightspeed-studios.com/), where I explored static-analysis-guided decoding for repository-level code generation.
-As first author, I proposed [Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723), a new form of next-generation intelligent agent.
+I study how algorithm design and systems engineering shape the capabilities and efficiency of LLM agents. My publications include [Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723) and studies of agents’ capabilities for [self-evolution](https://arxiv.org/abs/2510.26852) and [social evolution](https://arxiv.org/abs/2606.03544).
+
+I am currently a research intern at Baidu, working on agent algorithms for [Famou Agent](https://cloud.baidu.com/product/famou.html), which currently ranks #1 on the [MLE-Bench](https://github.com/openai/mle-bench) leaderboard for AutoResearch tasks. My ultimate goal is to enable recursive self-improvement (RSI) in agents. Previously, I interned with Meituan’s [LongCat LLM Team](https://github.com/meituan-longcat) and Tencent’s [LightSpeed Studios](https://www.lightspeed-studios.com/).
 
 **Research Interests:**
 
-- **Insightful and Creative Agents**: building agents with stronger insight and creativity to address the high-level design and fundamental discovery bottlenecks of current AI systems.
-- **Next-Generation Agent Forms**: building Natural-Language Agent Harnesses whose behavior and token budgets are easy for users to steer and control.
-- **General Long-Horizon Agents**: building general long-horizon agents for real-world productivity scenarios.
+- **Insightful and Creative Agents**: enabling agents to uncover critical insights that help overcome current AI systems’ bottlenecks in developing solutions to open-ended tasks and achieving original innovation.
+- **AI Scientists**: building self-starting, end-to-end agents that investigate a scientific topic from scratch and produce insightful, verifiable discoveries.
+- **Recursive Self-Improvement**: building agent systems that learn through real-world trial and error and recursively improve both their harnesses and models.
 
-My long-term goal is to build AGI agents that can produce useful work efficiently and become deeply useful across society.
+I am also betting on four paths to the next major breakthroughs in foundational LLMs: AI for open-ended subjective tasks, compute-efficient frontier models, model-native explicit knowledge modules, and AI capable of genuine innovation.
 
 <div class="profile-contact-icons" aria-label="Contact links">
   <a href="mailto:ply24@mails.tsinghua.edu.cn" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>

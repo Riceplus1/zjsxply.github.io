@@ -6,4 +6,4 @@ related_posts: false
 lang: zh
 ---
 
-🚀 发布 [Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)，探索下一代 Agent 系统原型。
+🚀 发布 [Natural-Language Agent Harnesses](https://arxiv.org/abs/2603.25723)——一种面向下一代 Agent 系统的原型。

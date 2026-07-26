@@ -6,8 +6,8 @@ pan2026naturallanguageagentharnesses:
   citations:
     google_scholar:
       ids:
-      - '5554083676653175677'
-      - '10581113726319067053'
+        - "5554083676653175677"
+        - "10581113726319067053"
       url: https://scholar.google.com/scholar?cites=5554083676653175677,10581113726319067053
       citations: 35
     semantic_scholar:
@@ -23,7 +23,7 @@ pan2026naturallanguageagentharnesses:
     total: 49
   x_discussion: https://x.com/rronak_/status/2038401494177694074
   award_name: Community Attention
-  award: Reached alphaXiv Hot \#1, selected by DAIR.AI Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)'s Top AI/ML Research Papers of the Week (7 papers total), and received 550K+ views on X.
+  award: Hit \#1 on alphaXiv’s Hot list, was selected for DAIR.AI’s Weekly Top 10 and [The AI Timeline](https://x.com/TheAITimeline/status/2038486801564700913)’s Top AI/ML Research Papers of the Week (7 papers total), and drew 550K+ views on X.
   abstract: >
     Agent performance is strongly shaped by the surrounding harness: the external execution system around a model that organizes a task run. Yet this logic is usually buried in tightly coupled controller code, which makes harnesses hard to inspect, compare, transfer, and ablate. This paper asks whether the reusable design pattern of an agent harness can be represented as an executable natural-language object. We introduce Natural-Language Agent Harnesses (NLAHs), editable documents that describe run-level harness policy, and Intelligent Harness Runtime (IHR), a shared runtime that interprets these documents into agent calls, handoffs, state updates, validation gates, and artifact contracts. Across coding, terminal-use, and computer-use benchmarks, IHR-executed NLAHs achieve comparable task outcomes to code and prompted realizations, while exposing much shorter static harness policies. Module ablations further show that explicit harness modules are analyzable. These results suggest that agent harnesses can be turned from incidental glue around models into scientific representation objects.
   author_marks:
@@ -44,7 +44,7 @@ fu2026catarenaevaluatingevolutionarycapabilities:
   citations:
     google_scholar:
       ids:
-      - '9187625130475749521'
+        - "9187625130475749521"
       url: https://scholar.google.com/scholar?cites=9187625130475749521
       citations: 1
     semantic_scholar:
