@@ -114,13 +114,11 @@ CV content in **RenderCV format** (recommended approach for generating professio
 
 Per-publication cited-paper caches written by the citation updater.
 
-**Format:** A top-level `metadata` block plus `papers`, where each paper stores `google_scholar`, `semantic_scholar`, and `ads` document lists.
+**Format:** A top-level `papers` mapping, where each paper stores `google_scholar`, `semantic_scholar`, and `ads` document lists. The updater does not store a timestamp because it is not part of the cited-paper cache.
 
 **Example:**
 
 ```yaml
-metadata:
-  last_updated: "2026-06-28"
 papers:
   example-paper:
     google_scholar:

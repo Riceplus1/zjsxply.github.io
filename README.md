@@ -23,6 +23,7 @@ Use `citations.google_scholar.ids` for the numeric `cites` IDs from Google Schol
 If Google Scholar splits one paper across records, include all numeric `cites` IDs; the workflow will query the combined Cited by URL.
 Entries without `citations.google_scholar.ids` fall back to normalized title matching against `_bibliography/papers.bib`.
 Semantic Scholar is matched by `citations.semantic_scholar.id`, or by BibTeX arXiv/DOI metadata when that field is missing.
+Semantic Scholar citing papers are deduplicated by arXiv ID or DOI. Split records without a stable ID are also collapsed when they have a high-confidence title and author match with an arXiv/DOI-backed record; the canonical record with stable metadata is retained.
 
 To enable it, add a repository secret named `SERPAPI_API_KEY` in GitHub Actions secrets.
 Add `ADS_API_TOKEN` for ADS lookups and optionally `SEMANTIC_SCHOLAR_API_KEY` to reduce Semantic Scholar rate limits.

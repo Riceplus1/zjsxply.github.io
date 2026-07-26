@@ -16,6 +16,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any
 
@@ -67,6 +68,10 @@ class PublicationBlock:
 class CitationItem:
     title: str
     link: str
+    arxiv_id: str | None = None
+    doi: str | None = None
+    author_keys: tuple[str, ...] = ()
+    publication_date: str | None = None
 
 
 def load_env(name: str) -> str | None:
@@ -266,6 +271,49 @@ def normalize_doi(doi: str) -> str:
     return doi.rstrip(".,;:)]}").lower()
 
 
+def valid_arxiv_id(value: str | None) -> str | None:
+    if not value:
+        return None
+    normalized = normalize_arxiv_id(value)
+    if re.fullmatch(r"(?:[a-z][a-z0-9.-]*/\d{7}|\d{4}\.\d{4,5})", normalized):
+        return normalized
+    return None
+
+
+def valid_doi(value: str | None) -> str | None:
+    if not value:
+        return None
+    normalized = normalize_doi(value)
+    return normalized if re.fullmatch(r"10\.\d{4,9}/\S+", normalized) else None
+
+
+def arxiv_id_from_url(url: str | None) -> str | None:
+    if not url:
+        return None
+    parsed = urllib.parse.urlparse(url)
+    if parsed.netloc.lower() not in {"arxiv.org", "www.arxiv.org"}:
+        return None
+    match = re.match(r"^/(?:abs|pdf)/(.+?)(?:\.pdf)?$", parsed.path, flags=re.IGNORECASE)
+    return valid_arxiv_id(match.group(1)) if match else None
+
+
+def doi_from_url(url: str | None) -> str | None:
+    if not url:
+        return None
+    parsed = urllib.parse.urlparse(url)
+    if parsed.netloc.lower() not in {"doi.org", "dx.doi.org", "www.doi.org"}:
+        return None
+    return valid_doi(parsed.path.lstrip("/"))
+
+
+def arxiv_id_from_identifiers(identifiers: list[str]) -> str | None:
+    for identifier in identifiers:
+        normalized = valid_arxiv_id(identifier)
+        if normalized:
+            return normalized
+    return None
+
+
 def normalize_url(url: str | None) -> str | None:
     if not url:
         return None
@@ -286,6 +334,10 @@ def article_title(article: dict[str, Any]) -> str | None:
 
 
 def citation_item_key(item: CitationItem) -> str:
+    if item.arxiv_id:
+        return f"arxiv:{item.arxiv_id}"
+    if item.doi:
+        return f"doi:{item.doi}"
     title_key = normalize_title(item.title)
     if title_key:
         return f"title:{title_key}"
@@ -294,15 +346,99 @@ def citation_item_key(item: CitationItem) -> str:
 
 
 def unique_items(items: list[CitationItem]) -> list[CitationItem]:
-    seen: set[str] = set()
+    positions: dict[str, int] = {}
     ordered: list[CitationItem] = []
     for item in items:
         key = citation_item_key(item)
-        if key in seen:
+        existing_index = positions.get(key)
+        if existing_index is not None:
+            if citation_item_preference(item) > citation_item_preference(ordered[existing_index]):
+                ordered[existing_index] = item
             continue
-        seen.add(key)
+        positions[key] = len(ordered)
         ordered.append(item)
     return ordered
+
+
+def citation_item_preference(item: CitationItem) -> tuple[int, int, int, int, int]:
+    return (
+        int(bool(item.arxiv_id)),
+        int(bool(item.doi)),
+        int(bool(item.publication_date)),
+        len(item.author_keys),
+        len(normalize_title(item.title)),
+    )
+
+
+def semantic_author_keys(authors: Any) -> tuple[str, ...]:
+    if not isinstance(authors, list):
+        return ()
+
+    keys: list[str] = []
+    for author in authors:
+        if not isinstance(author, dict):
+            continue
+        author_id = author.get("authorId")
+        if isinstance(author_id, str) and author_id.strip():
+            keys.append(f"id:{author_id.strip()}")
+            continue
+        name = author.get("name")
+        if isinstance(name, str):
+            normalized_name = normalize_title(name)
+            if normalized_name:
+                keys.append(f"name:{normalized_name}")
+    return tuple(dict.fromkeys(keys))
+
+
+def distinctive_title_prefix(title: str) -> str | None:
+    if ":" not in title:
+        return None
+    prefix = normalize_title(title.split(":", 1)[0])
+    if len(prefix) < 6 or len(prefix.split()) > 3 or prefix.split()[0] in {"a", "an", "the"}:
+        return None
+    return prefix
+
+
+def titles_look_like_revisions(first: str, second: str) -> bool:
+    first_normalized = normalize_title(first)
+    second_normalized = normalize_title(second)
+    if not first_normalized or not second_normalized:
+        return False
+    if first_normalized == second_normalized:
+        return True
+
+    stop_words = {"a", "an", "and", "for", "in", "of", "on", "the", "to"}
+    first_tokens = set(first_normalized.split()) - stop_words
+    second_tokens = set(second_normalized.split()) - stop_words
+    if not first_tokens or not second_tokens:
+        return False
+
+    token_containment = len(first_tokens & second_tokens) / min(len(first_tokens), len(second_tokens))
+    sequence_similarity = SequenceMatcher(None, first_normalized, second_normalized).ratio()
+    first_prefix = distinctive_title_prefix(first)
+    same_prefix = first_prefix is not None and first_prefix == distinctive_title_prefix(second)
+    return token_containment >= 0.7 and (sequence_similarity >= 0.8 or same_prefix)
+
+
+def semantic_items_are_revisions(orphan: CitationItem, canonical: CitationItem) -> bool:
+    if orphan.arxiv_id or orphan.doi or not (canonical.arxiv_id or canonical.doi):
+        return False
+    if len(orphan.author_keys) < 2 or len(canonical.author_keys) < 2:
+        return False
+
+    shared_authors = set(orphan.author_keys) & set(canonical.author_keys)
+    author_overlap = len(shared_authors) / min(len(orphan.author_keys), len(canonical.author_keys))
+    return len(shared_authors) >= 2 and author_overlap >= 0.6 and titles_look_like_revisions(orphan.title, canonical.title)
+
+
+def deduplicate_semantic_items(items: list[CitationItem]) -> list[CitationItem]:
+    unique = unique_items(items)
+    canonical_items = [item for item in unique if item.arxiv_id or item.doi]
+    return [
+        item
+        for item in unique
+        if item in canonical_items or not any(semantic_items_are_revisions(item, canonical) for canonical in canonical_items)
+    ]
 
 
 def item_dict(item: CitationItem) -> dict[str, str]:
@@ -574,7 +710,14 @@ def fetch_serpapi_citing_items(cites_ids: list[str], api_key: str) -> list[Citat
                 link = result.get("serpapi_link")
             if not isinstance(link, str) or not link.strip():
                 continue
-            items.append(CitationItem(title=title.strip(), link=link.strip()))
+            items.append(
+                CitationItem(
+                    title=title.strip(),
+                    link=link.strip(),
+                    arxiv_id=arxiv_id_from_url(link),
+                    doi=doi_from_url(link),
+                )
+            )
 
         if not page_results:
             break
@@ -604,7 +747,7 @@ def fetch_semantic_scholar_citing_items(paper_id: str, api_key: str | None) -> l
         payload = fetch_semantic_scholar(
             f"/paper/{urllib.parse.quote(paper_id, safe='')}/citations",
             {
-                "fields": "citingPaper.paperId,citingPaper.title,citingPaper.url",
+                "fields": "citingPaper.paperId,citingPaper.title,citingPaper.url,citingPaper.externalIds,citingPaper.authors,citingPaper.publicationDate",
                 "limit": str(SEMANTIC_SCHOLAR_CITATION_PAGE_SIZE),
                 "offset": str(offset),
             },
@@ -628,14 +771,31 @@ def fetch_semantic_scholar_citing_items(paper_id: str, api_key: str | None) -> l
                     link = f"https://www.semanticscholar.org/paper/{paper_id_value.strip()}"
             if not isinstance(link, str) or not link.strip():
                 continue
-            items.append(CitationItem(title=title.strip(), link=link.strip()))
+            external_ids = citing.get("externalIds")
+            if not isinstance(external_ids, dict):
+                external_ids = {}
+            arxiv_id = external_ids.get("ArXiv")
+            doi = external_ids.get("DOI")
+            publication_date = citing.get("publicationDate")
+            items.append(
+                CitationItem(
+                    title=title.strip(),
+                    link=link.strip(),
+                    arxiv_id=valid_arxiv_id(arxiv_id) if isinstance(arxiv_id, str) else None,
+                    doi=valid_doi(doi) if isinstance(doi, str) else None,
+                    author_keys=semantic_author_keys(citing.get("authors")),
+                    publication_date=publication_date.strip()
+                    if isinstance(publication_date, str) and publication_date.strip()
+                    else None,
+                )
+            )
 
         next_offset = payload.get("next")
         if next_offset is None:
             break
         offset = int(next_offset)
 
-    return unique_items(items)
+    return deduplicate_semantic_items(items)
 
 
 def ads_search_bibcode(query: str, token: str | None) -> str | None:
@@ -726,6 +886,7 @@ def fetch_ads_citing_items(bibcode: str, token: str) -> list[CitationItem]:
                 CitationItem(
                     title=title.strip(),
                     link=f"https://ui.adsabs.harvard.edu/abs/{cited_bibcode.strip()}/abstract",
+                    arxiv_id=arxiv_id_from_identifiers(as_string_list(doc.get("identifier"))),
                 )
             )
 
@@ -971,10 +1132,7 @@ def update_publications_file(
 
 
 def write_cited_documents(cache_by_paper: dict[str, dict[str, Any]]) -> None:
-    data = {
-        "metadata": {"last_updated": time.strftime("%Y-%m-%d")},
-        "papers": cache_by_paper,
-    }
+    data = {"papers": cache_by_paper}
     CITED_DOCUMENTS_PATH.write_text(
         yaml.safe_dump(data, sort_keys=False, allow_unicode=True, width=1000),
         encoding="utf-8",
