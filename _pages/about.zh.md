@@ -15,7 +15,7 @@ profile:
   more_info: >
     <p>清华深研院硕士生</p>
     <p>LLM Agent：洞见 · 创意 · Harness · Rubrics</p>
-    <p>深圳</p>
+    <p>广东深圳</p>
 
 selected_papers: true
 home_sections: true

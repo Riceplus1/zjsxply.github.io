@@ -15,7 +15,7 @@ profile:
   more_info: >
     <p>M.S. Student @ SIGS, THU</p>
     <p>Insights · Creativity · Harnesses · Rubrics for LLM Agents</p>
-    <p>Shenzhen, China</p>
+    <p>Shenzhen, Guangdong, China</p>
 
 selected_papers: true
 home_sections: true

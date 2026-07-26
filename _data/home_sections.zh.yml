@@ -29,7 +29,7 @@ internships:
     team: 光子工作室群
     team_url: https://guangzi.qq.com/
     role: 自然语言处理实习生
-    location: 深圳
+    location: 广东深圳
     period: 2025 年 4 月 – 2025 年 6 月
     bullets:
       - 从事静态分析引导的代码生成研究。
@@ -39,7 +39,7 @@ education:
   - institution: 清华大学（THU）
     logo: /assets/img/logos/tsinghua.svg
     degree: 计算机技术硕士，深圳国际研究生院
-    location: 深圳
+    location: 广东深圳
     period: 2024 年 9 月 – 2027 年 7 月
     bullets:
       - 🎯 清华大学深圳国际研究生院二年级硕士研究生，导师为 [郑海涛副教授](https://scholar.google.com/citations?user=7VPeORoAAAAJ)。
@@ -48,7 +48,7 @@ education:
   - institution: 中国矿业大学（CUMT）
     logo: /assets/img/logos/cumt.png
     degree: 数学与应用数学学士
-    location: 徐州
+    location: 江苏徐州
     period: 2019 年 9 月 – 2024 年 7 月
     bullets:
       - "📐 专业方向为计算、控制与优化，导师为[邵虎教授](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)。"
@@ -57,7 +57,7 @@ education:
   - institution: 绍兴市第一中学
     logo: /assets/img/logos/shaoxing-no1.png
     degree: 高中
-    location: 绍兴
+    location: 浙江绍兴
     period: 2016 年 2 月 – 2019 年 7 月
     bullets:
       - 高考选科为物理、生物、技术（含通用技术和信息技术）。

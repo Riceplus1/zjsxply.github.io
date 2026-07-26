@@ -29,7 +29,7 @@ internships:
     team_logo: /assets/img/logos/lightspeed-studios.jpg
     team_url: https://www.lightspeed-studios.com/
     role: Intern, Natural Language Processing
-    location: Shenzhen, China
+    location: Shenzhen, Guangdong, China
     period: Apr 2025 – Jun 2025
     bullets:
       - Research Intern on static-analysis-guided code generation.
@@ -39,7 +39,7 @@ education:
   - institution: Tsinghua University (THU)
     logo: /assets/img/logos/tsinghua.svg
     degree: M.S. in Computer Technology, Shenzhen International Graduate School (SIGS)
-    location: Shenzhen, China
+    location: Shenzhen, Guangdong, China
     period: Sep 2024 – Jul 2027
     bullets:
       - 🎯 Second-year master's student at Tsinghua SIGS advised by [Prof. Hai-Tao Zheng](https://scholar.google.com/citations?user=7VPeORoAAAAJ).
@@ -48,7 +48,7 @@ education:
   - institution: China University of Mining and Technology (CUMT)
     logo: /assets/img/logos/cumt.png
     degree: B.S. in Mathematics and Applied Mathematics
-    location: Xuzhou, China
+    location: Xuzhou, Jiangsu, China
     period: Sep 2019 – Jul 2024
     bullets:
       - "📐 Completed the Computation, Control, and Optimization track under the supervision of [Prof. Hu Shao](https://math.cumt.edu.cn/6d/ce/c9104a355790/page.htm)."
@@ -57,7 +57,7 @@ education:
   - institution: Shaoxing No. 1 High School
     logo: /assets/img/logos/shaoxing-no1.png
     degree: High School
-    location: Shaoxing, China
+    location: Shaoxing, Zhejiang, China
     period: Feb 2016 – Jul 2019
     bullets:
       - My selected Gaokao subjects were physics, biology, and technology (including general technology and information technology).
