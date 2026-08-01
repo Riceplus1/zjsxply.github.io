@@ -1,7 +1,114 @@
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    NLAH — main.js
-   PDF viewer, BibTeX copy, scroll fade-in, nav effects
-   ═══════════════════════════════════════════════════════════ */
+   PDF viewer, BibTeX copy, scroll fade-in, nav effects,
+   bilingual (EN/ZH) language switching
+   ═══════════════════════════════════════════════════════ */
+
+var currentLang = 'en';
+
+// ── LANGUAGE SWITCHING ────────────────────────────────
+
+(function () {
+  var panes = {
+    en: document.getElementById('pane-en'),
+    zh: document.getElementById('pane-zh')
+  };
+  var buttons = {
+    en: document.getElementById('lang-en'),
+    zh: document.getElementById('lang-zh')
+  };
+  var navSets = {
+    en: document.getElementById('navLinksEn'),
+    zh: document.getElementById('navLinksZh')
+  };
+  var brand = document.getElementById('navBrand');
+  var pdfCloseBtn = document.querySelector('.pdf-toolbar-actions button');
+  var pdfTitleEl  = document.getElementById('pdfTitle');
+  var pdfDownload = document.getElementById('pdfDownload');
+  var pdfNewTab   = document.getElementById('pdfNewTab');
+
+  var copy = {
+    en: {
+      title:     'NLAH: Natural-Language Agent Harnesses',
+      pdfTitle:  'PDF Viewer',
+      download:  'Download',
+      newTab:    'Open in new tab',
+      close:     'Close',
+      copy:      'Copy',
+      copied:    'Copied!'
+    },
+    zh: {
+      title:     'NLAH：自然语言智能体 Harness',
+      pdfTitle:  'PDF 查看器',
+      download:  '下载',
+      newTab:    '在新标签页打开',
+      close:     '关闭',
+      copy:      '复制',
+      copied:    '已复制！'
+    }
+  };
+  var storageKey = 'nlah_lang_v1';
+
+  function setLanguage(lang, updateUrl) {
+    if (!panes[lang]) lang = 'en';
+    currentLang = lang;
+
+    Object.keys(panes).forEach(function (key) {
+      var selected = key === lang;
+      panes[key].hidden   = !selected;
+      navSets[key].hidden = !selected;
+      buttons[key].classList.toggle('active', selected);
+      buttons[key].setAttribute('aria-pressed', selected ? 'true' : 'false');
+    });
+
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    document.title = copy[lang].title;
+    brand.href = lang === 'zh' ? '#hero-zh' : '#hero-en';
+
+    // Static UI strings (PDF toolbar, etc.)
+    if (pdfTitleEl)  pdfTitleEl.textContent = copy[lang].pdfTitle;
+    if (pdfDownload) pdfDownload.textContent = copy[lang].download;
+    if (pdfNewTab)   pdfNewTab.textContent   = copy[lang].newTab;
+    if (pdfCloseBtn) pdfCloseBtn.textContent = copy[lang].close;
+
+    // Make sure fade-in elements in the now-active pane are visible
+    panes[lang].querySelectorAll('.fade-in, .fade-in-up').forEach(function (el) {
+      el.classList.add('visible');
+    });
+
+    // Persist preference
+    try { window.localStorage.setItem(storageKey, lang); } catch (_) {}
+
+    if (updateUrl) {
+      var url = new URL(window.location.href);
+      url.hash = lang === 'zh' ? 'zh' : '';
+      window.history.replaceState(null, '', url);
+    }
+  }
+
+  buttons.en.addEventListener('click', function () { setLanguage('en', true); });
+  buttons.zh.addEventListener('click', function () { setLanguage('zh', true); });
+
+  // Initial language: URL hash → saved preference → browser language → en
+  var initial = 'en';
+  var hash = window.location.hash;
+  if (hash.indexOf('#zh') === 0) {
+    initial = 'zh';
+  } else if (hash.indexOf('#en') === 0) {
+    initial = 'en';
+  } else {
+    var saved = null;
+    try { saved = window.localStorage.getItem(storageKey); } catch (_) {}
+    if (saved === 'zh' || saved === 'en') {
+      initial = saved;
+    } else {
+      var navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if (navLang.indexOf('zh') === 0) initial = 'zh';
+    }
+  }
+  setLanguage(initial, false);
+})();
+
 
 // ── PDF VIEWER ──────────────────────────────────────────
 
@@ -9,9 +116,9 @@ function openPDF(url, title) {
   var overlay = document.getElementById('pdfOverlay');
   var frame   = document.getElementById('pdfFrame');
 
-  document.getElementById('pdfTitle').textContent    = title || 'PDF';
-  document.getElementById('pdfDownload').href         = url;
-  document.getElementById('pdfNewTab').href           = url;
+  document.getElementById('pdfTitle').textContent = title || (currentLang === 'zh' ? 'PDF 查看器' : 'PDF Viewer');
+  document.getElementById('pdfDownload').href = url;
+  document.getElementById('pdfNewTab').href   = url;
   frame.src = url;
 
   overlay.classList.add('active');
@@ -35,6 +142,8 @@ document.addEventListener('keydown', function (e) {
     var overlay = document.getElementById('pdfOverlay');
     if (overlay.classList.contains('active')) closePDF();
     // Also close mobile nav
+    var links = document.getElementById('navLinks');
+    var toggle = document.getElementById('navToggle');
     if (links && links.classList.contains('open')) {
       links.classList.remove('open');
       toggle.classList.remove('active');
@@ -46,32 +155,40 @@ document.addEventListener('keydown', function (e) {
 // ── COPY BIBTEX ─────────────────────────────────────────
 
 function copyBibtex() {
-  var el  = document.getElementById('bibtex');
-  var bib = el.textContent.trim();
-  var btn = document.querySelector('.btn-copy');
+  var activePane = document.querySelector('.lang-pane:not([hidden])');
+  if (!activePane) activePane = document.getElementById('pane-en');
+  var codeEl = activePane.querySelector('code');
+  var btn = activePane.querySelector('.btn-copy');
+  var copiedText = currentLang === 'zh' ? '已复制！' : 'Copied!';
+  var copyText   = currentLang === 'zh' ? '复制' : 'Copy';
+  var bib = codeEl.textContent.trim();
 
-  navigator.clipboard.writeText(bib).then(function () {
-    btn.innerHTML = '<i class="fa-regular fa-check"></i> Copied!';
+  function ok() {
+    btn.innerHTML = '<i class="fa-regular fa-check"></i> ' + copiedText;
     btn.classList.add('copied');
     setTimeout(function () {
-      btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+      btn.innerHTML = '<i class="fa-regular fa-copy"></i> ' + copyText;
       btn.classList.remove('copied');
     }, 2500);
-  }).catch(function () {
-    // Fallback
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(bib).then(ok).catch(function () {
+      fallbackCopy();
+    });
+  } else {
+    fallbackCopy();
+  }
+
+  function fallbackCopy() {
     var textarea = document.createElement('textarea');
     textarea.value = bib;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    btn.innerHTML = '<i class="fa-regular fa-check"></i> Copied!';
-    btn.classList.add('copied');
-    setTimeout(function () {
-      btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
-      btn.classList.remove('copied');
-    }, 2500);
-  });
+    ok();
+  }
 }
 
 

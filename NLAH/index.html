@@ -8,7 +8,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans:400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/style.css">
@@ -18,13 +19,26 @@
   <!-- ═══════════════ NAV ═══════════════ -->
   <nav class="nav" id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-brand">NLAH</a>
+      <a href="#hero-en" class="nav-brand" id="navBrand">NLAH</a>
       <div class="nav-links" id="navLinks">
-        <a href="#abstract">Abstract</a>
-        <a href="#method">Method</a>
-        <a href="#results">Results</a>
-        <a href="#ablation">Ablation</a>
-        <a href="#citation">Citation</a>
+        <div class="nav-links-set" id="navLinksEn">
+          <a href="#abstract-en">Abstract</a>
+          <a href="#method-en">Method</a>
+          <a href="#results-en">Results</a>
+          <a href="#ablation-en">Ablation</a>
+          <a href="#citation-en">Citation</a>
+        </div>
+        <div class="nav-links-set" id="navLinksZh" hidden>
+          <a href="#abstract-zh">摘要</a>
+          <a href="#method-zh">方法</a>
+          <a href="#results-zh">结果</a>
+          <a href="#ablation-zh">消融</a>
+          <a href="#citation-zh">引用</a>
+        </div>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language / 语言">
+        <button type="button" id="lang-en" class="active" aria-pressed="true">English</button>
+        <button type="button" id="lang-zh" aria-pressed="false">中文</button>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -32,402 +46,405 @@
     </div>
   </nav>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <div class="hero-bg-glow"></div>
-    </div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">arXiv 2026 &middot; cs.CL</div>
-        <h1 class="hero-title">
-          <span class="hero-title-line">Natural-Language</span>
-          <span class="hero-title-line">Agent Harnesses</span>
-        </h1>
-        <p class="hero-subtitle">
-          Turning agent harnesses from incidental glue around models into scientific representation objects.
+  <!-- ═══════════════ ENGLISH PANE ═══════════════ -->
+  <div id="pane-en" class="lang-pane" lang="en">
+
+    <!-- HERO -->
+    <section class="hero" id="hero-en">
+      <div class="hero-bg">
+        <div class="hero-bg-glow"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">arXiv 2026 &middot; cs.CL</div>
+          <h1 class="hero-title">
+            <span class="hero-title-line">Natural-Language</span>
+            <span class="hero-title-line">Agent Harnesses</span>
+          </h1>
+          <p class="hero-subtitle">
+            Turning agent harnesses from incidental glue around models into scientific representation objects.
+          </p>
+          <div class="hero-authors">
+            <a href="https://scholar.google.com/citations?user=xS16saYAAAAJ" target="_blank" rel="noopener">Linyue Pan</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=ufy0-VgAAAAJ" target="_blank" rel="noopener">Lexiao Zou</a><sup>2</sup>,
+            <a href="https://openreview.net/profile?id=~Shuo_Guo1" target="_blank" rel="noopener">Shuo Guo</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=KJSB8EkAAAAJ" target="_blank" rel="noopener">Jingchen Ni</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=7VPeORoAAAAJ" target="_blank" rel="noopener">Hai-Tao Zheng</a><sup>1,#</sup>
+          </div>
+          <div class="hero-affil">
+            <span><sup>1</sup> Tsinghua University (SIGS)</span>
+            <span><sup>2</sup> Harbin Institute of Technology (Shenzhen)</span>
+            <span><sup>#</sup> Corresponding author</span>
+          </div>
+          <div class="hero-links">
+            <a href="https://arxiv.org/abs/2603.25723" class="btn btn-primary" target="_blank" rel="noopener">
+              <i class="fa-regular fa-file-lines"></i> arXiv
+            </a>
+            <a href="javascript:void(0)" class="btn btn-outline" onclick="openPDF('https://arxiv.org/pdf/2603.25723','NLAH Paper')">
+              <i class="fa-regular fa-file-pdf"></i> PDF
+            </a>
+            <a href="https://github.com/curated-skills/LinguaClaw" class="btn btn-outline" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github"></i> Code
+            </a>
+          </div>
+          <div class="hero-tldr">
+            <strong>TL;DR:</strong> We introduce <strong>NLAHs</strong>, editable natural-language documents that describe agent run-level harness policy, and <strong>IHR</strong>, a shared runtime that executes them. Across coding, terminal, and GUI benchmarks, NLAH+IHR achieves performance comparable to native code harnesses while compressing the readable policy from tens of thousands to just hundreds of tokens.
+          </div>
+        </div>
+        <div class="hero-stats fade-in-up">
+          <div class="stat-card">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Benchmark<br>Families</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">73.0%</span>
+            <span class="stat-label">SWE-bench<br>Verified</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">97%</span>
+            <span class="stat-label">Policy<br>Compression</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">9</span>
+            <span class="stat-label">Ablation<br>Modules</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABSTRACT -->
+    <section class="section fade-in" id="abstract-en">
+      <div class="container">
+        <div class="section-label">Abstract</div>
+        <h2 class="section-title">Abstract</h2>
+        <p class="abstract-text">
+          Agent performance is strongly shaped by the surrounding <em>harness</em>: the external execution system
+          around a model that organizes a task run. Yet this logic is usually buried in tightly coupled controller
+          code, which makes harnesses hard to inspect, compare, transfer, and ablate. This paper asks whether the
+          reusable design pattern of an agent harness can be represented as an executable natural-language object.
         </p>
-        <div class="hero-authors">
-          <a href="https://scholar.google.com/citations?user=xS16saYAAAAJ" target="_blank" rel="noopener">Linyue Pan</a><sup>1</sup>,
-          <a href="https://scholar.google.com/citations?user=ufy0-VgAAAAJ" target="_blank" rel="noopener">Lexiao Zou</a><sup>2</sup>,
-          <a href="https://openreview.net/profile?id=~Shuo_Guo1" target="_blank" rel="noopener">Shuo Guo</a><sup>1</sup>,
-          <a href="https://scholar.google.com/citations?user=KJSB8EkAAAAJ" target="_blank" rel="noopener">Jingchen Ni</a><sup>1</sup>,
-          <a href="https://scholar.google.com/citations?user=7VPeORoAAAAJ" target="_blank" rel="noopener">Hai-Tao Zheng</a><sup>1,#</sup>
-        </div>
-        <div class="hero-affil">
-          <span><sup>1</sup> Tsinghua University (SIGS)</span>
-          <span><sup>2</sup> Harbin Institute of Technology (Shenzhen)</span>
-          <span><sup>#</sup> Corresponding author</span>
-        </div>
-        <div class="hero-links">
-          <a href="https://arxiv.org/abs/2603.25723" class="btn btn-primary" target="_blank" rel="noopener">
-            <i class="fa-regular fa-file-lines"></i> arXiv
-          </a>
-          <a href="javascript:void(0)" class="btn btn-outline" onclick="openPDF('https://arxiv.org/pdf/2603.25723','NLAH Paper')">
-            <i class="fa-regular fa-file-pdf"></i> PDF
-          </a>
-          <a href="https://github.com/curated-skills/LinguaClaw" class="btn btn-outline" target="_blank" rel="noopener">
-            <i class="fa-brands fa-github"></i> Code
-          </a>
-        </div>
-        <div class="hero-tldr">
-          <strong>TL;DR:</strong> We introduce <strong>NLAHs</strong>, editable natural-language documents that describe agent run-level harness policy, and <strong>IHR</strong>, a shared runtime that executes them. Across coding, terminal, and GUI benchmarks, NLAH+IHR achieves performance comparable to native code harnesses while compressing the readable policy from tens of thousands to just hundreds of tokens.
-        </div>
-      </div>
-      <div class="hero-stats fade-in-up">
-        <div class="stat-card">
-          <span class="stat-value">3</span>
-          <span class="stat-label">Benchmark<br>Families</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-value">73.0%</span>
-          <span class="stat-label">SWE-bench<br>Verified</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-value">97%</span>
-          <span class="stat-label">Policy<br>Compression</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-value">9</span>
-          <span class="stat-label">Ablation<br>Modules</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ ABSTRACT ═══════════════ -->
-  <section class="section fade-in" id="abstract">
-    <div class="container">
-      <div class="section-label">Abstract</div>
-      <h2 class="section-title">Abstract</h2>
-      <p class="abstract-text">
-        Agent performance is strongly shaped by the surrounding <em>harness</em>: the external execution system
-        around a model that organizes a task run. Yet this logic is usually buried in tightly coupled controller
-        code, which makes harnesses hard to inspect, compare, transfer, and ablate. This paper asks whether the
-        reusable design pattern of an agent harness can be represented as an executable natural-language object.
-      </p>
-      <p class="abstract-text">
-        We introduce <strong>Natural-Language Agent Harnesses (NLAHs)</strong>, editable documents that describe
-        run-level harness policy, and <strong>Intelligent Harness Runtime (IHR)</strong>, a shared runtime that
-        interprets these documents into agent calls, handoffs, state updates, validation gates, and artifact
-        contracts. Across coding, terminal-use, and computer-use benchmarks, IHR-executed NLAHs achieve comparable
-        task outcomes to code and prompted realizations, while exposing much shorter static harness policies.
-        Module ablations further show that explicit harness modules are analyzable.
-      </p>
-      <div class="insight-row">
-        <div class="insight-card">
-          <i class="fa-regular fa-file-lines insight-icon"></i>
-          <h3>Readable Policy</h3>
-          <p>Harness policy compressed from thousands to hundreds of tokens — inspectable at a glance.</p>
-        </div>
-        <div class="insight-card">
-          <i class="fa-regular fa-window-maximize insight-icon"></i>
-          <h3>Shared Runtime</h3>
-          <p>IHR executes NLAHs across coding, terminal, and GUI benchmarks under common semantics.</p>
-        </div>
-        <div class="insight-card">
-          <i class="fa-regular fa-flask insight-icon"></i>
-          <h3>Analyzable Modules</h3>
-          <p>Explicit modules support clean ablation — revealing what actually drives agent performance.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ TEASER ═══════════════ -->
-  <section class="section section-alt fade-in" id="teaser">
-    <div class="container">
-      <div class="section-label">Overview</div>
-      <h2 class="section-title">Three Ways to Control an Agent Run</h2>
-      <p class="section-subtitle">
-        The spectrum ranges from rigid code control to fully autonomous self-harnessing. NLAH+IHR sits in the
-        middle — keeping policy readable while remaining executable under a shared runtime.
-      </p>
-      <figure class="figure-block figure-teaser">
-        <img src="static/img/teaser.png" alt="Three paradigms for controlling an agent run" class="figure-img" loading="lazy">
-        <figcaption>
-          <span class="fig-label">Figure 1</span>
-          <span class="fig-text"><strong>Three ways to control an agent run.</strong> The spectrum ranges from hard external control (Code Harness) to no external harness (Self-Harnessing). NLAH+IHR occupies the middle ground: harness policy is written in readable natural language while a shared runtime executes that policy through child-agent calls.</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ═══════════════ METHOD ═══════════════ -->
-  <section class="section fade-in" id="method">
-    <div class="container">
-      <div class="section-label">Method</div>
-      <h2 class="section-title">NLAH + IHR Framework</h2>
-      <p class="section-subtitle">
-        Separating harness <em>policy</em> from <em>mechanism</em> — the core design that makes agent harnesses
-        into inspectable, editable, and executable objects.
-      </p>
-
-      <div class="method-grid">
-        <div class="method-layer">
-          <div class="method-layer-num">4</div>
-          <div class="method-layer-body">
-            <h3>Scripts &amp; Adapters</h3>
-            <p>Deterministic code for exact operations — test runners, parsers, validators, benchmark wrappers, sandboxing. Kept in code because they require precision.</p>
-          </div>
-        </div>
-        <div class="method-layer">
-          <div class="method-layer-num">3</div>
-          <div class="method-layer-body">
-            <h3>NLAH</h3>
-            <p class="highlight">The per-harness policy document.</p>
-            <p>Editable natural language that specifies stages, roles, state rules, verification gates, recovery rules, and stopping conditions. This is what changes from one harness to another.</p>
-          </div>
-        </div>
-        <div class="method-layer">
-          <div class="method-layer-num">2</div>
-          <div class="method-layer-body">
-            <h3>Runtime Policy / Charter</h3>
-            <p class="highlight">Shared execution semantics.</p>
-            <p>A fixed instruction that defines how IHR interprets NLAHs — parent-child boundaries, artifact semantics, completion gates, and audit requirements.</p>
-          </div>
-        </div>
-        <div class="method-layer">
-          <div class="method-layer-num">1</div>
-          <div class="method-layer-body">
-            <h3>Base Agent</h3>
-            <p>Minimal executable substrate — an LLM loop with terminal access. Can read/write files, run processes, record events, and launch child agents.</p>
-          </div>
-        </div>
-      </div>
-
-      <figure class="figure-block figure-framework">
-        <img src="static/img/framework.png" alt="NLAH+IHR framework architecture" class="figure-img" loading="lazy">
-        <figcaption>
-          <span class="fig-label">Figure 2</span>
-          <span class="fig-text"><strong>NLAH+IHR framework overview.</strong> In a native code harness, policy and mechanism are mixed inside opaque controller code. NLAH+IHR separates them into four layers: a base agent (code), a runtime policy charter (fixed NL), the NLAH itself (replaceable NL), and scripts/adapters (deterministic code hooks). This separation makes the harness policy layer directly inspectable and editable.</span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ═══════════════ RESULTS ═══════════════ -->
-  <section class="section section-alt fade-in" id="results">
-    <div class="container">
-      <div class="section-label">Results</div>
-      <h2 class="section-title">Results</h2>
-      <p class="section-subtitle">
-        Three research questions evaluate whether NLAH+IHR can control agent runs, preserve harness mechanisms,
-        and support module-level analysis.
-      </p>
-
-      <!-- ── RQ1 ── -->
-      <div class="rq-block">
-        <h3 class="rq-title">RQ1: Harness Realization</h3>
-        <p class="rq-question">
-          Can NLAHs shape observable agent behavior while maintaining competitive task outcomes?
+        <p class="abstract-text">
+          We introduce <strong>Natural-Language Agent Harnesses (NLAHs)</strong>, editable documents that describe
+          run-level harness policy, and <strong>Intelligent Harness Runtime (IHR)</strong>, a shared runtime that
+          interprets these documents into agent calls, handoffs, state updates, validation gates, and artifact
+          contracts. Across coding, terminal-use, and computer-use benchmarks, IHR-executed NLAHs achieve comparable
+          task outcomes to code and prompted realizations, while exposing much shorter static harness policies.
+          Module ablations further show that explicit harness modules are analyzable.
         </p>
+        <div class="insight-row">
+          <div class="insight-card">
+            <i class="fa-regular fa-file-lines insight-icon"></i>
+            <h3>Readable Policy</h3>
+            <p>Harness policy compressed from thousands to hundreds of tokens — inspectable at a glance.</p>
+          </div>
+          <div class="insight-card">
+            <i class="fa-regular fa-window-maximize insight-icon"></i>
+            <h3>Shared Runtime</h3>
+            <p>IHR executes NLAHs across coding, terminal, and GUI benchmarks under common semantics.</p>
+          </div>
+          <div class="insight-card">
+            <i class="fa-regular fa-flask insight-icon"></i>
+            <h3>Analyzable Modules</h3>
+            <p>Explicit modules support clean ablation — revealing what actually drives agent performance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEASER -->
+    <section class="section section-alt fade-in" id="teaser-en">
+      <div class="container">
+        <div class="section-label">Overview</div>
+        <h2 class="section-title">Three Ways to Control an Agent Run</h2>
+        <p class="section-subtitle">
+          The spectrum ranges from rigid code control to fully autonomous self-harnessing. NLAH+IHR sits in the
+          middle — keeping policy readable while remaining executable under a shared runtime.
+        </p>
+        <figure class="figure-block figure-teaser">
+          <img src="static/img/teaser.png" alt="Three paradigms for controlling an agent run" class="figure-img" loading="lazy">
+          <figcaption>
+            <span class="fig-label">Figure 1</span>
+            <span class="fig-text"><strong>Three ways to control an agent run.</strong> The spectrum ranges from hard external control (Code Harness) to no external harness (Self-Harnessing). NLAH+IHR occupies the middle ground: harness policy is written in readable natural language while a shared runtime executes that policy through child-agent calls.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section fade-in" id="method-en">
+      <div class="container">
+        <div class="section-label">Method</div>
+        <h2 class="section-title">NLAH + IHR Framework</h2>
+        <p class="section-subtitle">
+          Separating harness <em>policy</em> from <em>mechanism</em> — the core design that makes agent harnesses
+          into inspectable, editable, and executable objects.
+        </p>
+
+        <div class="method-grid">
+          <div class="method-layer">
+            <div class="method-layer-num">4</div>
+            <div class="method-layer-body">
+              <h3>Scripts &amp; Adapters</h3>
+              <p>Deterministic code for exact operations — test runners, parsers, validators, benchmark wrappers, sandboxing. Kept in code because they require precision.</p>
+            </div>
+          </div>
+          <div class="method-layer">
+            <div class="method-layer-num">3</div>
+            <div class="method-layer-body">
+              <h3>NLAH</h3>
+              <p class="highlight">The per-harness policy document.</p>
+              <p>Editable natural language that specifies stages, roles, state rules, verification gates, recovery rules, and stopping conditions. This is what changes from one harness to another.</p>
+            </div>
+          </div>
+          <div class="method-layer">
+            <div class="method-layer-num">2</div>
+            <div class="method-layer-body">
+              <h3>Runtime Policy / Charter</h3>
+              <p class="highlight">Shared execution semantics.</p>
+              <p>A fixed instruction that defines how IHR interprets NLAHs — parent-child boundaries, artifact semantics, completion gates, and audit requirements.</p>
+            </div>
+          </div>
+          <div class="method-layer">
+            <div class="method-layer-num">1</div>
+            <div class="method-layer-body">
+              <h3>Base Agent</h3>
+              <p>Minimal executable substrate — an LLM loop with terminal access. Can read/write files, run processes, record events, and launch child agents.</p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="figure-block figure-framework">
+          <img src="static/img/framework.png" alt="NLAH+IHR framework architecture" class="figure-img" loading="lazy">
+          <figcaption>
+            <span class="fig-label">Figure 2</span>
+            <span class="fig-text"><strong>NLAH+IHR framework overview.</strong> In a native code harness, policy and mechanism are mixed inside opaque controller code. NLAH+IHR separates them into four layers: a base agent (code), a runtime policy charter (fixed NL), the NLAH itself (replaceable NL), and scripts/adapters (deterministic code hooks). This separation makes the harness policy layer directly inspectable and editable.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section section-alt fade-in" id="results-en">
+      <div class="container">
+        <div class="section-label">Results</div>
+        <h2 class="section-title">Results</h2>
+        <p class="section-subtitle">
+          Three research questions evaluate whether NLAH+IHR can control agent runs, preserve harness mechanisms,
+          and support module-level analysis.
+        </p>
+
+        <!-- RQ1 -->
+        <div class="rq-block">
+          <h3 class="rq-title">RQ1: Harness Realization</h3>
+          <p class="rq-question">
+            Can NLAHs shape observable agent behavior while maintaining competitive task outcomes?
+          </p>
+          <div class="table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Benchmark</th>
+                  <th>Harness</th>
+                  <th>Type</th>
+                  <th>Perf. &uarr;</th>
+                  <th>LLM Calls</th>
+                  <th>Tool Calls</th>
+                  <th>Input Tok.</th>
+                  <th>Output Tok.</th>
+                  <th>Runtime (min)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td rowspan="3">SWE-bench<br>Verified</td><td rowspan="3">Live-SWE</td><td>Code</td><td>67.0</td><td>23.3</td><td>17.7</td><td>283.6k</td><td>3.5k</td><td>28.9</td></tr>
+                <tr><td>Prompt</td><td>77.0</td><td>36.4</td><td>48.0</td><td>2.20M</td><td>27.5k</td><td>5.7</td></tr>
+                <tr class="row-nlah"><td>NLAH</td><td class="perf">73.0</td><td>41.0</td><td>63.4</td><td>2.20M</td><td>32.3k</td><td>6.1</td></tr>
+                <tr><td rowspan="3">Terminal-Bench 2.0</td><td rowspan="3">MHTBA</td><td>Code</td><td>36.0</td><td>223.2</td><td>122.9</td><td>10.40M</td><td>17.5k</td><td>19.5</td></tr>
+                <tr><td>Prompt</td><td>57.3</td><td>41.5</td><td>48.0</td><td>3.10M</td><td>51.8k</td><td>11.1</td></tr>
+                <tr class="row-nlah"><td>NLAH</td><td class="perf">53.9</td><td>56.4</td><td>78.0</td><td>4.20M</td><td>74.8k</td><td>13.5</td></tr>
+                <tr><td rowspan="3">OSWorld</td><td rowspan="3">SeeAct</td><td>Code</td><td>47.1</td><td>23.3</td><td>47.8</td><td>1.40M</td><td>8.9k</td><td>9.0</td></tr>
+                <tr><td>Prompt</td><td>47.9</td><td>35.3</td><td>39.2</td><td>1.10M</td><td>12.3k</td><td>4.9</td></tr>
+                <tr class="row-nlah"><td>NLAH</td><td class="perf">46.3</td><td>40.9</td><td>48.6</td><td>1.10M</td><td>13.6k</td><td>5.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rq-findings">
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>Performance parity:</strong> NLAH achieves 73.0% on SWE-bench (vs. 67.0% code) and 46.3% on OSWorld (vs. 47.1% code) — competitive across all three benchmarks.</span>
+            </div>
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>Policy compression:</strong> Live-SWE readable harness drops from 60.1k → 2.9k tokens; MHTBA from 10.5k → 0.8k tokens.</span>
+            </div>
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>Cost profile reflects prototype engineering:</strong> NLAH uses more calls/tokens than optimized code harnesses, but this is not fundamental — it's a prototype-runtime overhead.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RQ2 -->
+        <div class="rq-block">
+          <h3 class="rq-title">RQ2: Harness Mechanism Realization</h3>
+          <p class="rq-question">
+            Do NLAHs materialize the intended harness mechanisms — workflow structure, contract enforcement, tool use, recovery, and handoff?
+          </p>
+          <div class="rq2-cols">
+            <div class="rq2-col">
+              <h4>Pattern Preservation</h4>
+              <div class="table-wrap">
+                <table class="result-table result-table-sm">
+                  <thead>
+                    <tr><th>Metric</th><th>Live-SWE<br>Prompt</th><th>Live-SWE<br>NLAH</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Verification Signals</td><td>6.51</td><td class="perf">9.89</td></tr>
+                    <tr><td>Prompt Contract</td><td>0.89</td><td>0.81</td></tr>
+                    <tr><td>Tool Surface</td><td>0.82</td><td class="perf">0.87</td></tr>
+                    <tr><td>Workflow Preservation</td><td>0.70</td><td>0.67</td></tr>
+                    <tr><td>Stage Coverage</td><td>0.75</td><td class="perf">0.82</td></tr>
+                    <tr><td>Ordered Workflow</td><td>0.74</td><td class="perf">0.78</td></tr>
+                    <tr><td>Context Boundary</td><td>1.00</td><td>0.76</td></tr>
+                    <tr><td>Model Match</td><td>1.00</td><td>0.76</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="rq2-col">
+              <h4>Harness Engineering</h4>
+              <div class="table-wrap">
+                <table class="result-table result-table-sm">
+                  <thead>
+                    <tr><th>Metric</th><th>Live-SWE<br>NLAH</th><th>MHTBA<br>NLAH</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Artifact Contract</td><td class="perf">1.000</td><td>0.955</td></tr>
+                    <tr><td>Tool Call Success</td><td>0.933</td><td>0.928</td></tr>
+                    <tr><td>Failed Tool Continuation</td><td class="perf">0.992</td><td class="perf">0.995</td></tr>
+                    <tr><td>Cached Token Ratio</td><td>0.94</td><td>0.94</td></tr>
+                    <tr><td>Orchestration Reliability</td><td>0.83</td><td>0.85</td></tr>
+                    <tr><td>Information Handoff Recall</td><td class="warn">0.322</td><td class="warn">0.553</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="rq-findings">
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>Mechanisms materialize:</strong> High artifact-contract compliance (≥0.955), tool-call success (≥0.93), and recovery after failure (≥0.99) across benchmarks.</span>
+            </div>
+            <div class="finding finding-warn">
+              <i class="fa-regular fa-circle-exclamation"></i>
+              <span><strong>Handoff is the main gap:</strong> Information handoff recall drops under parent-child execution (0.32–0.55) — the clearest engineering target for the prototype runtime.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABLATION -->
+    <section class="section fade-in" id="ablation-en">
+      <div class="container">
+        <div class="section-label">Ablation</div>
+        <h2 class="section-title">RQ3: Module Ablation</h2>
+        <p class="section-subtitle">
+          Once harness modules are explicit, can they be cleanly ablated and analyzed? Each row adds one module
+          to a benchmark-specific Basic condition.
+        </p>
+
         <div class="table-wrap">
-          <table class="result-table">
+          <table class="result-table result-table-ablation">
             <thead>
               <tr>
-                <th>Benchmark</th>
-                <th>Harness</th>
-                <th>Type</th>
-                <th>Perf. &uarr;</th>
-                <th>LLM Calls</th>
-                <th>Tool Calls</th>
-                <th>Input Tok.</th>
-                <th>Output Tok.</th>
-                <th>Runtime (min)</th>
+                <th>Setting</th>
+                <th colspan="2">SWE Verified</th>
+                <th colspan="2">OSWorld</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>Perf.</th>
+                <th>Agent Calls</th>
+                <th>Perf.</th>
+                <th>Agent Calls</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td rowspan="3">SWE-bench<br>Verified</td><td rowspan="3">Live-SWE</td><td>Code</td><td>67.0</td><td>23.3</td><td>17.7</td><td>283.6k</td><td>3.5k</td><td>28.9</td></tr>
-              <tr><td>Prompt</td><td>77.0</td><td>36.4</td><td>48.0</td><td>2.20M</td><td>27.5k</td><td>5.7</td></tr>
-              <tr class="row-nlah"><td>NLAH</td><td class="perf">73.0</td><td>41.0</td><td>63.4</td><td>2.20M</td><td>32.3k</td><td>6.1</td></tr>
-              <tr><td rowspan="3">Terminal-Bench 2.0</td><td rowspan="3">MHTBA</td><td>Code</td><td>36.0</td><td>223.2</td><td>122.9</td><td>10.40M</td><td>17.5k</td><td>19.5</td></tr>
-              <tr><td>Prompt</td><td>57.3</td><td>41.5</td><td>48.0</td><td>3.10M</td><td>51.8k</td><td>11.1</td></tr>
-              <tr class="row-nlah"><td>NLAH</td><td class="perf">53.9</td><td>56.4</td><td>78.0</td><td>4.20M</td><td>74.8k</td><td>13.5</td></tr>
-              <tr><td rowspan="3">OSWorld</td><td rowspan="3">SeeAct</td><td>Code</td><td>47.1</td><td>23.3</td><td>47.8</td><td>1.40M</td><td>8.9k</td><td>9.0</td></tr>
-              <tr><td>Prompt</td><td>47.9</td><td>35.3</td><td>39.2</td><td>1.10M</td><td>12.3k</td><td>4.9</td></tr>
-              <tr class="row-nlah"><td>NLAH</td><td class="perf">46.3</td><td>40.9</td><td>48.6</td><td>1.10M</td><td>13.6k</td><td>5.5</td></tr>
+              <tr><td>Basic</td><td>73.0</td><td>1.10</td><td>44.4</td><td>1.08</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + File-backed state</td><td class="perf">75.6 <span class="delta pos">+2.6</span></td><td>1.10</td><td class="perf">58.3 <span class="delta pos">+13.9</span></td><td>1.11</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Evidence-backed answering</td><td class="perf">75.8 <span class="delta pos">+2.8</span></td><td>1.20</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.06</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Verifier</td><td class="perf">73.2 <span class="delta pos">+0.2</span></td><td>2.30</td><td class="perf">52.8 <span class="delta pos">+8.4</span></td><td>1.42</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Self-evolution</td><td class="perf">78.8 <span class="delta pos">+5.8</span></td><td>1.20</td><td class="perf">52.8 <span class="delta pos">+8.4</span></td><td>1.19</td></tr>
+              <tr class="row-mix"><td><i class="fa-regular fa-circle-minus"></i> + Multi-candidate search</td><td>71.4 <span class="delta neg">−1.6</span></td><td>5.70</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.33</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Dynamic orchestration</td><td class="perf">74.6 <span class="delta pos">+1.6</span></td><td>1.60</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.14</td></tr>
+              <tr class="row-neg"><td><i class="fa-regular fa-circle-down"></i> + Context compression</td><td>72.0 <span class="delta neg">−1.0</span></td><td>2.20</td><td>36.1 <span class="delta neg">−8.3</span></td><td>1.22</td></tr>
+              <tr class="row-neg"><td><i class="fa-regular fa-circle-down"></i> + Markdown memory</td><td>70.2 <span class="delta neg">−2.8</span></td><td>1.30</td><td class="perf">50.0 <span class="delta pos">+5.6</span></td><td>1.54</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="rq-findings">
-          <div class="finding">
-            <i class="fa-regular fa-circle-check"></i>
-            <span><strong>Performance parity:</strong> NLAH achieves 73.0% on SWE-bench (vs. 67.0% code) and 46.3% on OSWorld (vs. 47.1% code) — competitive across all three benchmarks.</span>
-          </div>
-          <div class="finding">
-            <i class="fa-regular fa-circle-check"></i>
-            <span><strong>Policy compression:</strong> Live-SWE readable harness drops from 60.1k → 2.9k tokens; MHTBA from 10.5k → 0.8k tokens.</span>
-          </div>
-          <div class="finding">
-            <i class="fa-regular fa-circle-check"></i>
-            <span><strong>Cost profile reflects prototype engineering:</strong> NLAH uses more calls/tokens than optimized code harnesses, but this is not fundamental — it's a prototype-runtime overhead.</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- ── RQ2 ── -->
-      <div class="rq-block">
-        <h3 class="rq-title">RQ2: Harness Mechanism Realization</h3>
-        <p class="rq-question">
-          Do NLAHs materialize the intended harness mechanisms — workflow structure, contract enforcement, tool use, recovery, and handoff?
-        </p>
-        <div class="rq2-cols">
-          <div class="rq2-col">
-            <h4>Pattern Preservation</h4>
-            <div class="table-wrap">
-              <table class="result-table result-table-sm">
-                <thead>
-                  <tr><th>Metric</th><th>Live-SWE<br>Prompt</th><th>Live-SWE<br>NLAH</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Verification Signals</td><td>6.51</td><td class="perf">9.89</td></tr>
-                  <tr><td>Prompt Contract</td><td>0.89</td><td>0.81</td></tr>
-                  <tr><td>Tool Surface</td><td>0.82</td><td class="perf">0.87</td></tr>
-                  <tr><td>Workflow Preservation</td><td>0.70</td><td>0.67</td></tr>
-                  <tr><td>Stage Coverage</td><td>0.75</td><td class="perf">0.82</td></tr>
-                  <tr><td>Ordered Workflow</td><td>0.74</td><td class="perf">0.78</td></tr>
-                  <tr><td>Context Boundary</td><td>1.00</td><td>0.76</td></tr>
-                  <tr><td>Model Match</td><td>1.00</td><td>0.76</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="rq2-col">
-            <h4>Harness Engineering</h4>
-            <div class="table-wrap">
-              <table class="result-table result-table-sm">
-                <thead>
-                  <tr><th>Metric</th><th>Live-SWE<br>NLAH</th><th>MHTBA<br>NLAH</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Artifact Contract</td><td class="perf">1.000</td><td>0.955</td></tr>
-                  <tr><td>Tool Call Success</td><td>0.933</td><td>0.928</td></tr>
-                  <tr><td>Failed Tool Continuation</td><td class="perf">0.992</td><td class="perf">0.995</td></tr>
-                  <tr><td>Cached Token Ratio</td><td>0.94</td><td>0.94</td></tr>
-                  <tr><td>Orchestration Reliability</td><td>0.83</td><td>0.85</td></tr>
-                  <tr><td>Information Handoff Recall</td><td class="warn">0.322</td><td class="warn">0.553</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <figure class="figure-block figure-chart" style="margin-top:2rem;">
+          <img src="static/img/rq2_cost_union.png" alt="RQ3 cost and complementarity analysis" class="figure-img" loading="lazy">
+          <figcaption>
+            <span class="fig-label">Figure 3</span>
+            <span class="fig-text"><strong>RQ3 cost and complementarity on SWE-bench.</strong> Left: resolved rate versus estimated token-based API cost per sample. Self-evolution is the only module that improves score without a large cost increase. Right: standalone solved rate and union solved rate with Basic, showing which modules recover cases Basic misses.</span>
+          </figcaption>
+        </figure>
+
         <div class="rq-findings">
           <div class="finding">
-            <i class="fa-regular fa-circle-check"></i>
-            <span><strong>Mechanisms materialize:</strong> High artifact-contract compliance (≥0.955), tool-call success (≥0.93), and recovery after failure (≥0.99) across benchmarks.</span>
+            <i class="fa-regular fa-lightbulb"></i>
+            <span><strong>State &amp; discipline win:</strong> File-backed state and self-evolution are the strongest modules — they tighten the path from intermediate work to auditable evidence and final benchmark acceptance.</span>
           </div>
           <div class="finding finding-warn">
-            <i class="fa-regular fa-circle-exclamation"></i>
-            <span><strong>Handoff is the main gap:</strong> Information handoff recall drops under parent-child execution (0.32–0.55) — the clearest engineering target for the prototype runtime.</span>
+            <i class="fa-regular fa-lightbulb"></i>
+            <span><strong>More branching ≠ better control:</strong> Multi-candidate search produces the largest topology change (5.7 agent calls on SWE) but yields a net negative (−1.6%). Extra process layers without acceptance alignment can hurt.</span>
+          </div>
+          <div class="finding finding-neg">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span><strong>Compression is risky:</strong> Context compression hurts both benchmarks. Durable path-addressable state (file-backed) is a more reliable carrier than aggressive summarization.</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ ABLATION ═══════════════ -->
-  <section class="section fade-in" id="ablation">
-    <div class="container">
-      <div class="section-label">Ablation</div>
-      <h2 class="section-title">RQ3: Module Ablation</h2>
-      <p class="section-subtitle">
-        Once harness modules are explicit, can they be cleanly ablated and analyzed? Each row adds one module
-        to a benchmark-specific Basic condition.
-      </p>
-
-      <div class="table-wrap">
-        <table class="result-table result-table-ablation">
-          <thead>
-            <tr>
-              <th>Setting</th>
-              <th colspan="2">SWE Verified</th>
-              <th colspan="2">OSWorld</th>
-            </tr>
-            <tr>
-              <th></th>
-              <th>Perf.</th>
-              <th>Agent Calls</th>
-              <th>Perf.</th>
-              <th>Agent Calls</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Basic</td><td>73.0</td><td>1.10</td><td>44.4</td><td>1.08</td></tr>
-            <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + File-backed state</td><td class="perf">75.6 <span class="delta pos">+2.6</span></td><td>1.10</td><td class="perf">58.3 <span class="delta pos">+13.9</span></td><td>1.11</td></tr>
-            <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Evidence-backed answering</td><td class="perf">75.8 <span class="delta pos">+2.8</span></td><td>1.20</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.06</td></tr>
-            <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Verifier</td><td class="perf">73.2 <span class="delta pos">+0.2</span></td><td>2.30</td><td class="perf">52.8 <span class="delta pos">+8.4</span></td><td>1.42</td></tr>
-            <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Self-evolution</td><td class="perf">78.8 <span class="delta pos">+5.8</span></td><td>1.20</td><td class="perf">52.8 <span class="delta pos">+8.4</span></td><td>1.19</td></tr>
-            <tr class="row-mix"><td><i class="fa-regular fa-circle-minus"></i> + Multi-candidate search</td><td>71.4 <span class="delta neg">−1.6</span></td><td>5.70</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.33</td></tr>
-            <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + Dynamic orchestration</td><td class="perf">74.6 <span class="delta pos">+1.6</span></td><td>1.60</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.14</td></tr>
-            <tr class="row-neg"><td><i class="fa-regular fa-circle-down"></i> + Context compression</td><td>72.0 <span class="delta neg">−1.0</span></td><td>2.20</td><td>36.1 <span class="delta neg">−8.3</span></td><td>1.22</td></tr>
-            <tr class="row-neg"><td><i class="fa-regular fa-circle-down"></i> + Markdown memory</td><td>70.2 <span class="delta neg">−2.8</span></td><td>1.30</td><td class="perf">50.0 <span class="delta pos">+5.6</span></td><td>1.54</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <figure class="figure-block figure-chart" style="margin-top:2rem;">
-        <img src="static/img/rq2_cost_union.png" alt="RQ3 cost and complementarity analysis" class="figure-img" loading="lazy">
-        <figcaption>
-          <span class="fig-label">Figure 3</span>
-          <span class="fig-text"><strong>RQ3 cost and complementarity on SWE-bench.</strong> Left: resolved rate versus estimated token-based API cost per sample. Self-evolution is the only module that improves score without a large cost increase. Right: standalone solved rate and union solved rate with Basic, showing which modules recover cases Basic misses.</span>
-        </figcaption>
-      </figure>
-
-      <div class="rq-findings">
-        <div class="finding">
-          <i class="fa-regular fa-lightbulb"></i>
-          <span><strong>State &amp; discipline win:</strong> File-backed state and self-evolution are the strongest modules — they tighten the path from intermediate work to auditable evidence and final benchmark acceptance.</span>
-        </div>
-        <div class="finding finding-warn">
-          <i class="fa-regular fa-lightbulb"></i>
-          <span><strong>More branching ≠ better control:</strong> Multi-candidate search produces the largest topology change (5.7 agent calls on SWE) but yields a net negative (−1.6%). Extra process layers without acceptance alignment can hurt.</span>
-        </div>
-        <div class="finding finding-neg">
-          <i class="fa-regular fa-lightbulb"></i>
-          <span><strong>Compression is risky:</strong> Context compression hurts both benchmarks. Durable path-addressable state (file-backed) is a more reliable carrier than aggressive summarization.</span>
+    <!-- CONCLUSION -->
+    <section class="section section-alt fade-in" id="conclusion-en">
+      <div class="container">
+        <div class="section-label">Conclusion</div>
+        <h2 class="section-title">Conclusion</h2>
+        <p class="section-subtitle">
+          Harness policy can be externalized into compact, executable, and analyzable natural-language objects —
+          turning incidental glue around models into scientific representation objects.
+        </p>
+        <div class="conclusion-grid">
+          <div class="conclusion-card">
+            <div class="conclusion-num">1</div>
+            <p><strong>NLAHs</strong> make harness policy explicit as editable natural-language documents — readable, portable, and module-structured.</p>
+          </div>
+          <div class="conclusion-card">
+            <div class="conclusion-num">2</div>
+            <p><strong>IHR</strong> provides shared execution semantics that turn NLAH text into auditable agent calls, handoffs, state, and verification gates.</p>
+          </div>
+          <div class="conclusion-card">
+            <div class="conclusion-num">3</div>
+            <p><strong>Competitive outcomes</strong> across coding, terminal-use, and computer-use benchmarks — NLAH performance is in the same regime as code harnesses.</p>
+          </div>
+          <div class="conclusion-card">
+            <div class="conclusion-num">4</div>
+            <p><strong>Module-level analysis</strong> is feasible once harness modules are explicit — enabling a scientific approach to harness design.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ CONCLUSION ═══════════════ -->
-  <section class="section section-alt fade-in" id="conclusion">
-    <div class="container">
-      <div class="section-label">Conclusion</div>
-      <h2 class="section-title">Conclusion</h2>
-      <p class="section-subtitle">
-        Harness policy can be externalized into compact, executable, and analyzable natural-language objects —
-        turning incidental glue around models into scientific representation objects.
-      </p>
-      <div class="conclusion-grid">
-        <div class="conclusion-card">
-          <div class="conclusion-num">1</div>
-          <p><strong>NLAHs</strong> make harness policy explicit as editable natural-language documents — readable, portable, and module-structured.</p>
-        </div>
-        <div class="conclusion-card">
-          <div class="conclusion-num">2</div>
-          <p><strong>IHR</strong> provides shared execution semantics that turn NLAH text into auditable agent calls, handoffs, state, and verification gates.</p>
-        </div>
-        <div class="conclusion-card">
-          <div class="conclusion-num">3</div>
-          <p><strong>Competitive outcomes</strong> across coding, terminal-use, and computer-use benchmarks — NLAH performance is in the same regime as code harnesses.</p>
-        </div>
-        <div class="conclusion-card">
-          <div class="conclusion-num">4</div>
-          <p><strong>Module-level analysis</strong> is feasible once harness modules are explicit — enabling a scientific approach to harness design.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ CITATION ═══════════════ -->
-  <section class="section fade-in" id="citation">
-    <div class="container">
-      <div class="section-label">Citation</div>
-      <h2 class="section-title">Citation</h2>
-      <div class="citation-box">
-        <pre><code id="bibtex">@misc{pan2026naturallanguageagentharnesses,
+    <!-- CITATION -->
+    <section class="section fade-in" id="citation-en">
+      <div class="container">
+        <div class="section-label">Citation</div>
+        <h2 class="section-title">Citation</h2>
+        <div class="citation-box">
+          <pre><code id="bibtex">@misc{pan2026naturallanguageagentharnesses,
   title     = {Natural-Language Agent Harnesses},
   author    = {Pan, Linyue and Zou, Lexiao and Guo, Shuo
                and Ni, Jingchen and Zheng, Hai-Tao},
@@ -436,25 +453,451 @@
   primaryclass  = {cs.CL},
   url       = {https://arxiv.org/abs/2603.25723}
 }</code></pre>
-        <button class="btn-copy" onclick="copyBibtex()">
-          <i class="fa-regular fa-copy"></i> Copy
-        </button>
+          <button class="btn-copy" onclick="copyBibtex()">
+            <i class="fa-regular fa-copy"></i> Copy
+          </button>
+        </div>
+        <div class="citation-links">
+          <a href="https://arxiv.org/abs/2603.25723" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+          <a href="https://github.com/curated-skills/LinguaClaw" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code (LinguaClaw)</a>
+          <a href="https://x.com/ply_thu" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> @ply_thu</a>
+          <a href="https://zjsxply.github.io/" target="_blank" rel="noopener"><i class="fa-regular fa-user"></i> Linyue Pan</a>
+        </div>
       </div>
-      <div class="citation-links">
-        <a href="https://arxiv.org/abs/2603.25723" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> arXiv</a>
-        <a href="https://github.com/curated-skills/LinguaClaw" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code (LinguaClaw)</a>
-        <a href="https://x.com/ply_thu" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> @ply_thu</a>
-        <a href="https://zjsxply.github.io/" target="_blank" rel="noopener"><i class="fa-regular fa-user"></i> Linyue Pan</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Authors. This page is part of the <a href="https://zjsxply.github.io/" target="_blank" rel="noopener">NLAH project</a>.</p>
-    </div>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Authors. This page is part of the <a href="https://zjsxply.github.io/" target="_blank" rel="noopener">NLAH project</a>.</p>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /END ENGLISH PANE -->
+
+  <!-- ═══════════════ 中文面板 ═══════════════ -->
+  <div id="pane-zh" class="lang-pane" lang="zh-CN" hidden>
+
+    <!-- HERO -->
+    <section class="hero" id="hero-zh">
+      <div class="hero-bg">
+        <div class="hero-bg-glow"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">arXiv 2026 &middot; cs.CL</div>
+          <h1 class="hero-title">
+            <span class="hero-title-line">自然语言</span>
+            <span class="hero-title-line">智能体 Harness</span>
+          </h1>
+          <p class="hero-subtitle">
+            把智能体 Harness 从围绕模型的附属胶水，变成可研究的科学表征对象。
+          </p>
+          <div class="hero-authors">
+            <a href="https://scholar.google.com/citations?user=xS16saYAAAAJ" target="_blank" rel="noopener">Linyue Pan</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=ufy0-VgAAAAJ" target="_blank" rel="noopener">Lexiao Zou</a><sup>2</sup>,
+            <a href="https://openreview.net/profile?id=~Shuo_Guo1" target="_blank" rel="noopener">Shuo Guo</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=KJSB8EkAAAAJ" target="_blank" rel="noopener">Jingchen Ni</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=7VPeORoAAAAJ" target="_blank" rel="noopener">Hai-Tao Zheng</a><sup>1,#</sup>
+          </div>
+          <div class="hero-affil">
+            <span><sup>1</sup> 清华大学深圳国际研究生院</span>
+            <span><sup>2</sup> 哈尔滨工业大学（深圳）</span>
+            <span><sup>#</sup> 通讯作者</span>
+          </div>
+          <div class="hero-links">
+            <a href="https://arxiv.org/abs/2603.25723" class="btn btn-primary" target="_blank" rel="noopener">
+              <i class="fa-regular fa-file-lines"></i> arXiv
+            </a>
+            <a href="javascript:void(0)" class="btn btn-outline" onclick="openPDF('https://arxiv.org/pdf/2603.25723','NLAH 论文')">
+              <i class="fa-regular fa-file-pdf"></i> PDF
+            </a>
+            <a href="https://github.com/curated-skills/LinguaClaw" class="btn btn-outline" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github"></i> 代码
+            </a>
+          </div>
+          <div class="hero-tldr">
+            <strong>TL;DR：</strong> 我们提出 <strong>NLAHs</strong>——用可编辑的自然语言文档描述智能体运行级 harness 策略，以及 <strong>IHR</strong>——一个执行这些策略的共享运行时。在编码、终端和 GUI 基准上，NLAH+IHR 达到了与原生代码 harness 相当的性能，同时把可读策略从数万 token 压缩到数百 token。
+          </div>
+        </div>
+        <div class="hero-stats fade-in-up">
+          <div class="stat-card">
+            <span class="stat-value">3</span>
+            <span class="stat-label">基准<br>家族</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">73.0%</span>
+            <span class="stat-label">SWE-bench<br>Verified</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">97%</span>
+            <span class="stat-label">策略<br>压缩</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">9</span>
+            <span class="stat-label">消融<br>模块</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABSTRACT -->
+    <section class="section fade-in" id="abstract-zh">
+      <div class="container">
+        <div class="section-label">摘要</div>
+        <h2 class="section-title">摘要</h2>
+        <p class="abstract-text">
+          智能体的性能在很大程度上受周围 <em>harness</em> 的影响：即模型外部、组织任务运行的执行系统。
+          然而这些逻辑通常埋在高度耦合的控制器代码中，导致 harness 难以检查、比较、迁移和消融。
+          本文提出一个问题：智能体 harness 的可复用设计模式，能否被表示成可执行的自然语言对象？
+        </p>
+        <p class="abstract-text">
+          我们提出 <strong>自然语言智能体 Harness（NLAHs）</strong>——可编辑的文档，描述运行级 harness
+          策略——以及 <strong>智能体 Harness 运行时（IHR）</strong>——一个共享运行时，把这些文档解释为
+          智能体调用、交接、状态更新、验证门和产物契约。在编码、终端使用和计算机使用基准上，由 IHR
+          执行的 NLAH 取得了与代码实现和提示词实现相当的任务结果，同时暴露出更短的静态 harness 策略。
+          模块消融进一步表明显式的 harness 模块是可分析的。
+        </p>
+        <div class="insight-row">
+          <div class="insight-card">
+            <i class="fa-regular fa-file-lines insight-icon"></i>
+            <h3>可读策略</h3>
+            <p>Harness 策略从数千 token 压缩到数百 token——一目了然。</p>
+          </div>
+          <div class="insight-card">
+            <i class="fa-regular fa-window-maximize insight-icon"></i>
+            <h3>共享运行时</h3>
+            <p>IHR 在通用语义下，跨编码、终端和 GUI 基准执行 NLAHs。</p>
+          </div>
+          <div class="insight-card">
+            <i class="fa-regular fa-flask insight-icon"></i>
+            <h3>可分析模块</h3>
+            <p>显式模块支持干净的消融——揭示到底是什么驱动了智能体的性能。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEASER -->
+    <section class="section section-alt fade-in" id="teaser-zh">
+      <div class="container">
+        <div class="section-label">总览</div>
+        <h2 class="section-title">控制智能体运行的三种方式</h2>
+        <p class="section-subtitle">
+          谱系从刚性代码控制到完全自主的自我 harness。NLAH+IHR 处在中间——在共享运行时下保持策略可读且可执行。
+        </p>
+        <figure class="figure-block figure-teaser">
+          <img src="static/img/teaser.png" alt="控制智能体运行的三种范式" class="figure-img" loading="lazy">
+          <figcaption>
+            <span class="fig-label">图 1</span>
+            <span class="fig-text"><strong>控制智能体运行的三种方式。</strong> 谱系从硬性外部控制（代码 Harness）到无外部 harness（自我 Harness）。NLAH+IHR 处于中间地带：harness 策略用可读的自然语言编写，而共享运行时通过子智能体调用执行该策略。</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section fade-in" id="method-zh">
+      <div class="container">
+        <div class="section-label">方法</div>
+        <h2 class="section-title">NLAH + IHR 框架</h2>
+        <p class="section-subtitle">
+          将 harness 的<em>策略</em>与<em>机制</em>分离——这是让智能体 harness 成为可检查、可编辑、可执行对象的核心设计。
+        </p>
+
+        <div class="method-grid">
+          <div class="method-layer">
+            <div class="method-layer-num">4</div>
+            <div class="method-layer-body">
+              <h3>脚本与适配器</h3>
+              <p>用于精确操作的确定性代码——测试运行器、解析器、验证器、基准包装、沙箱。因为它们需要精确性，所以保留在代码中。</p>
+            </div>
+          </div>
+          <div class="method-layer">
+            <div class="method-layer-num">3</div>
+            <div class="method-layer-body">
+              <h3>NLAH</h3>
+              <p class="highlight">每个 harness 的策略文档。</p>
+              <p>可编辑的自然语言，指定阶段、角色、状态规则、验证门、恢复规则和停止条件。这是不同 harness 之间变化的部分。</p>
+            </div>
+          </div>
+          <div class="method-layer">
+            <div class="method-layer-num">2</div>
+            <div class="method-layer-body">
+              <h3>运行时策略 / 宪章</h3>
+              <p class="highlight">共享的执行语义。</p>
+              <p>一条固定指令，定义 IHR 如何解释 NLAHs——父子边界、产物语义、完成门和审计要求。</p>
+            </div>
+          </div>
+          <div class="method-layer">
+            <div class="method-layer-num">1</div>
+            <div class="method-layer-body">
+              <h3>基础智能体</h3>
+              <p>最小可执行底座——一个带终端访问权限的 LLM 循环。可以读写文件、运行进程、记录事件、启动子智能体。</p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="figure-block figure-framework">
+          <img src="static/img/framework.png" alt="NLAH+IHR 框架架构" class="figure-img" loading="lazy">
+          <figcaption>
+            <span class="fig-label">图 2</span>
+            <span class="fig-text"><strong>NLAH+IHR 框架总览。</strong> 在原生代码 harness 中，策略和机制混在晦涩的控制器代码里。NLAH+IHR 将它们分为四层：基础智能体（代码）、运行时策略宪章（固定自然语言）、NLAH 本身（可替换自然语言）和脚本/适配器（确定性代码钩子）。这种分离让 harness 策略层可以直接被检查和编辑。</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section section-alt fade-in" id="results-zh">
+      <div class="container">
+        <div class="section-label">结果</div>
+        <h2 class="section-title">结果</h2>
+        <p class="section-subtitle">
+          三个研究问题评估 NLAH+IHR 能否控制智能体运行、保留 harness 机制，并支持模块级分析。
+        </p>
+
+        <!-- RQ1 -->
+        <div class="rq-block">
+          <h3 class="rq-title">RQ1：Harness 实现</h3>
+          <p class="rq-question">
+            NLAHs 能否在保持竞争力任务结果的同时，塑造可观测的智能体行为？
+          </p>
+          <div class="table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>基准</th>
+                  <th>Harness</th>
+                  <th>类型</th>
+                  <th>性能 &uarr;</th>
+                  <th>LLM 调用</th>
+                  <th>工具调用</th>
+                  <th>输入 Tok.</th>
+                  <th>输出 Tok.</th>
+                  <th>运行时间（分钟）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td rowspan="3">SWE-bench<br>Verified</td><td rowspan="3">Live-SWE</td><td>代码</td><td>67.0</td><td>23.3</td><td>17.7</td><td>283.6k</td><td>3.5k</td><td>28.9</td></tr>
+                <tr><td>提示词</td><td>77.0</td><td>36.4</td><td>48.0</td><td>2.20M</td><td>27.5k</td><td>5.7</td></tr>
+                <tr class="row-nlah"><td>NLAH</td><td class="perf">73.0</td><td>41.0</td><td>63.4</td><td>2.20M</td><td>32.3k</td><td>6.1</td></tr>
+                <tr><td rowspan="3">Terminal-Bench 2.0</td><td rowspan="3">MHTBA</td><td>代码</td><td>36.0</td><td>223.2</td><td>122.9</td><td>10.40M</td><td>17.5k</td><td>19.5</td></tr>
+                <tr><td>提示词</td><td>57.3</td><td>41.5</td><td>48.0</td><td>3.10M</td><td>51.8k</td><td>11.1</td></tr>
+                <tr class="row-nlah"><td>NLAH</td><td class="perf">53.9</td><td>56.4</td><td>78.0</td><td>4.20M</td><td>74.8k</td><td>13.5</td></tr>
+                <tr><td rowspan="3">OSWorld</td><td rowspan="3">SeeAct</td><td>代码</td><td>47.1</td><td>23.3</td><td>47.8</td><td>1.40M</td><td>8.9k</td><td>9.0</td></tr>
+                <tr><td>提示词</td><td>47.9</td><td>35.3</td><td>39.2</td><td>1.10M</td><td>12.3k</td><td>4.9</td></tr>
+                <tr class="row-nlah"><td>NLAH</td><td class="perf">46.3</td><td>40.9</td><td>48.6</td><td>1.10M</td><td>13.6k</td><td>5.5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rq-findings">
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>性能持平：</strong> NLAH 在 SWE-bench 达到 73.0%（代码为 67.0%），在 OSWorld 达到 46.3%（代码为 47.1%）——在三个基准上都具竞争力。</span>
+            </div>
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>策略压缩：</strong> Live-SWE 的可读 harness 从 60.1k 降到 2.9k token；MHTBA 从 10.5k 降到 0.8k token。</span>
+            </div>
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>成本特征反映原型工程：</strong> NLAH 比优化的代码 harness 使用更多调用/token，但这并非本质问题——是原型运行时的开销。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RQ2 -->
+        <div class="rq-block">
+          <h3 class="rq-title">RQ2：Harness 机制实现</h3>
+          <p class="rq-question">
+            NLAHs 是否实现了预期的 harness 机制——工作流结构、契约执行、工具使用、恢复和交接？
+          </p>
+          <div class="rq2-cols">
+            <div class="rq2-col">
+              <h4>模式保持</h4>
+              <div class="table-wrap">
+                <table class="result-table result-table-sm">
+                  <thead>
+                    <tr><th>指标</th><th>Live-SWE<br>提示词</th><th>Live-SWE<br>NLAH</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>验证信号</td><td>6.51</td><td class="perf">9.89</td></tr>
+                    <tr><td>提示词契约</td><td>0.89</td><td>0.81</td></tr>
+                    <tr><td>工具面</td><td>0.82</td><td class="perf">0.87</td></tr>
+                    <tr><td>工作流保持</td><td>0.70</td><td>0.67</td></tr>
+                    <tr><td>阶段覆盖</td><td>0.75</td><td class="perf">0.82</td></tr>
+                    <tr><td>有序工作流</td><td>0.74</td><td class="perf">0.78</td></tr>
+                    <tr><td>上下文边界</td><td>1.00</td><td>0.76</td></tr>
+                    <tr><td>模型匹配</td><td>1.00</td><td>0.76</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="rq2-col">
+              <h4>Harness 工程</h4>
+              <div class="table-wrap">
+                <table class="result-table result-table-sm">
+                  <thead>
+                    <tr><th>指标</th><th>Live-SWE<br>NLAH</th><th>MHTBA<br>NLAH</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>产物契约</td><td class="perf">1.000</td><td>0.955</td></tr>
+                    <tr><td>工具调用成功率</td><td>0.933</td><td>0.928</td></tr>
+                    <tr><td>失败工具继续</td><td class="perf">0.992</td><td class="perf">0.995</td></tr>
+                    <tr><td>缓存 Token 占比</td><td>0.94</td><td>0.94</td></tr>
+                    <tr><td>编排可靠性</td><td>0.83</td><td>0.85</td></tr>
+                    <tr><td>信息交接召回</td><td class="warn">0.322</td><td class="warn">0.553</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="rq-findings">
+            <div class="finding">
+              <i class="fa-regular fa-circle-check"></i>
+              <span><strong>机制得以实现：</strong> 各基准上产物契约合规率高（≥0.955）、工具调用成功率（≥0.93）、失败后恢复率（≥0.99）。</span>
+            </div>
+            <div class="finding finding-warn">
+              <i class="fa-regular fa-circle-exclamation"></i>
+              <span><strong>交接是主要缺口：</strong> 在父子执行下信息交接召回率下降（0.32–0.55）——这是原型运行时最清晰的工程目标。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABLATION -->
+    <section class="section fade-in" id="ablation-zh">
+      <div class="container">
+        <div class="section-label">消融</div>
+        <h2 class="section-title">RQ3：模块消融</h2>
+        <p class="section-subtitle">
+          一旦 harness 模块显式化，能否被干净地消融和分析？每一行在特定基准的 Basic 条件上添加一个模块。
+        </p>
+
+        <div class="table-wrap">
+          <table class="result-table result-table-ablation">
+            <thead>
+              <tr>
+                <th>设置</th>
+                <th colspan="2">SWE Verified</th>
+                <th colspan="2">OSWorld</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>性能</th>
+                <th>智能体调用</th>
+                <th>性能</th>
+                <th>智能体调用</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>基础</td><td>73.0</td><td>1.10</td><td>44.4</td><td>1.08</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + 文件支撑状态</td><td class="perf">75.6 <span class="delta pos">+2.6</span></td><td>1.10</td><td class="perf">58.3 <span class="delta pos">+13.9</span></td><td>1.11</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + 证据支撑回答</td><td class="perf">75.8 <span class="delta pos">+2.8</span></td><td>1.20</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.06</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + 验证器</td><td class="perf">73.2 <span class="delta pos">+0.2</span></td><td>2.30</td><td class="perf">52.8 <span class="delta pos">+8.4</span></td><td>1.42</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + 自我进化</td><td class="perf">78.8 <span class="delta pos">+5.8</span></td><td>1.20</td><td class="perf">52.8 <span class="delta pos">+8.4</span></td><td>1.19</td></tr>
+              <tr class="row-mix"><td><i class="fa-regular fa-circle-minus"></i> + 多候选搜索</td><td>71.4 <span class="delta neg">−1.6</span></td><td>5.70</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.33</td></tr>
+              <tr class="row-pos"><td><i class="fa-regular fa-circle-up"></i> + 动态编排</td><td class="perf">74.6 <span class="delta pos">+1.6</span></td><td>1.60</td><td class="perf">47.2 <span class="delta pos">+2.8</span></td><td>1.14</td></tr>
+              <tr class="row-neg"><td><i class="fa-regular fa-circle-down"></i> + 上下文压缩</td><td>72.0 <span class="delta neg">−1.0</span></td><td>2.20</td><td>36.1 <span class="delta neg">−8.3</span></td><td>1.22</td></tr>
+              <tr class="row-neg"><td><i class="fa-regular fa-circle-down"></i> + Markdown 记忆</td><td>70.2 <span class="delta neg">−2.8</span></td><td>1.30</td><td class="perf">50.0 <span class="delta pos">+5.6</span></td><td>1.54</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure class="figure-block figure-chart" style="margin-top:2rem;">
+          <img src="static/img/rq2_cost_union.png" alt="RQ3 成本与互补性分析" class="figure-img" loading="lazy">
+          <figcaption>
+            <span class="fig-label">图 3</span>
+            <span class="fig-text"><strong>SWE-bench 上的 RQ3 成本与互补性分析。</strong> 左：解决率对比每个样本的估算 token 化 API 成本。自我进化是唯一在不大幅增加成本的情况下提高分数的模块。右：与 Basic 的独立解决率和联合解决率，显示哪些模块恢复了 Basic 遗漏的样本。</span>
+          </figcaption>
+        </figure>
+
+        <div class="rq-findings">
+          <div class="finding">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span><strong>状态与纪律获胜：</strong> 文件支撑状态和自我进化是最强的模块——它们缩短了从中间工作到可审计证据、再到最终基准通过的距离。</span>
+          </div>
+          <div class="finding finding-warn">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span><strong>更多分支 ≠ 更好的控制：</strong> 多候选搜索产生了最大的拓扑变化（SWE 上 5.7 次智能体调用）但净收益为负（−1.6%）。不与接受标准对齐的额外流程层可能有害。</span>
+          </div>
+          <div class="finding finding-neg">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span><strong>压缩有风险：</strong> 上下文压缩在两个基准上都造成了损失。持久化、可寻址的状态（文件支撑）比激进摘要更可靠。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCLUSION -->
+    <section class="section section-alt fade-in" id="conclusion-zh">
+      <div class="container">
+        <div class="section-label">结论</div>
+        <h2 class="section-title">结论</h2>
+        <p class="section-subtitle">
+          Harness 策略可以被外部化为紧凑、可执行、可分析的自然语言对象——把围绕模型的附属胶水变成可研究的科学表征对象。
+        </p>
+        <div class="conclusion-grid">
+          <div class="conclusion-card">
+            <div class="conclusion-num">1</div>
+            <p><strong>NLAHs</strong> 把 harness 策略显式化为可编辑的自然语言文档——可读、可迁移、模块化。</p>
+          </div>
+          <div class="conclusion-card">
+            <div class="conclusion-num">2</div>
+            <p><strong>IHR</strong> 提供共享执行语义，把 NLAH 文本变成可审计的智能体调用、交接、状态和验证门。</p>
+          </div>
+          <div class="conclusion-card">
+            <div class="conclusion-num">3</div>
+            <p><strong>竞争性结果</strong> 覆盖编码、终端使用和计算机使用基准——NLAH 性能与代码 harness 处于同一水平。</p>
+          </div>
+          <div class="conclusion-card">
+            <div class="conclusion-num">4</div>
+            <p><strong>模块级分析</strong> 一旦 harness 模块显式化就变得可行——为 harness 设计提供科学方法。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITATION -->
+    <section class="section fade-in" id="citation-zh">
+      <div class="container">
+        <div class="section-label">引用</div>
+        <h2 class="section-title">引用</h2>
+        <div class="citation-box">
+          <pre><code id="bibtex-zh">@misc{pan2026naturallanguageagentharnesses,
+  title     = {Natural-Language Agent Harnesses},
+  author    = {Pan, Linyue and Zou, Lexiao and Guo, Shuo
+               and Ni, Jingchen and Zheng, Hai-Tao},
+  year      = {2026},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url       = {https://arxiv.org/abs/2603.25723}
+}</code></pre>
+          <button class="btn-copy" onclick="copyBibtex()">
+            <i class="fa-regular fa-copy"></i> 复制
+          </button>
+        </div>
+        <div class="citation-links">
+          <a href="https://arxiv.org/abs/2603.25723" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+          <a href="https://github.com/curated-skills/LinguaClaw" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> 代码（LinguaClaw）</a>
+          <a href="https://x.com/ply_thu" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> @ply_thu</a>
+          <a href="https://zjsxply.github.io/" target="_blank" rel="noopener"><i class="fa-regular fa-user"></i> Linyue Pan</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 作者。此页面是 <a href="https://zjsxply.github.io/" target="_blank" rel="noopener">NLAH 项目</a> 的一部分。</p>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /END 中文面板 -->
 
   <!-- ═══════════════ PDF OVERLAY ═══════════════ -->
   <div class="pdf-overlay" id="pdfOverlay" onclick="closeOnBackdrop(event)">
