@@ -489,17 +489,17 @@
           <div class="hero-badge">arXiv 2026 &middot; cs.CL</div>
           <h1 class="hero-title">
             <span class="hero-title-line">自然语言</span>
-            <span class="hero-title-line">智能体 Harness</span>
+            <span class="hero-title-line">Agent Harnesses</span>
           </h1>
           <p class="hero-subtitle">
-            把智能体 Harness 从围绕模型的附属胶水，变成可研究的科学表征对象。
+            把 agent Harness 从围绕模型的附属胶水，变成可研究的科学表征对象。
           </p>
           <div class="hero-authors">
-            <a href="https://scholar.google.com/citations?user=xS16saYAAAAJ" target="_blank" rel="noopener">Linyue Pan</a><sup>1</sup>,
-            <a href="https://scholar.google.com/citations?user=ufy0-VgAAAAJ" target="_blank" rel="noopener">Lexiao Zou</a><sup>2</sup>,
+            <a href="https://scholar.google.com/citations?user=xS16saYAAAAJ" target="_blank" rel="noopener">潘林越</a><sup>1</sup>,
+            <a href="https://scholar.google.com/citations?user=ufy0-VgAAAAJ" target="_blank" rel="noopener">邹乐骁</a><sup>2</sup>,
             <a href="https://openreview.net/profile?id=~Shuo_Guo1" target="_blank" rel="noopener">Shuo Guo</a><sup>1</sup>,
             <a href="https://scholar.google.com/citations?user=KJSB8EkAAAAJ" target="_blank" rel="noopener">Jingchen Ni</a><sup>1</sup>,
-            <a href="https://scholar.google.com/citations?user=7VPeORoAAAAJ" target="_blank" rel="noopener">Hai-Tao Zheng</a><sup>1,#</sup>
+            <a href="https://scholar.google.com/citations?user=7VPeORoAAAAJ" target="_blank" rel="noopener">郑海涛</a><sup>1,#</sup>
           </div>
           <div class="hero-affil">
             <span><sup>1</sup> 清华大学深圳国际研究生院</span>
@@ -518,7 +518,7 @@
             </a>
           </div>
           <div class="hero-tldr">
-            <strong>TL;DR：</strong> 我们提出 <strong>NLAHs</strong>——用可编辑的自然语言文档描述智能体运行级 harness 策略，以及 <strong>IHR</strong>——一个执行这些策略的共享运行时。在编码、终端和 GUI 基准上，NLAH+IHR 达到了与原生代码 harness 相当的性能，同时把可读策略从数万 token 压缩到数百 token。
+            <strong>太长不看：</strong> 把 agent Harness 从不可读的代码变成可读、可执行的自然语言文档。性能不掉，可读策略压缩 97%。
           </div>
         </div>
         <div class="hero-stats fade-in-up">
@@ -548,14 +548,14 @@
         <div class="section-label">摘要</div>
         <h2 class="section-title">摘要</h2>
         <p class="abstract-text">
-          智能体的性能在很大程度上受周围 <em>harness</em> 的影响：即模型外部、组织任务运行的执行系统。
+          agent 的性能在很大程度上受周围 <em>harness</em> 的影响：即模型外部、组织任务运行的执行系统。
           然而这些逻辑通常埋在高度耦合的控制器代码中，导致 harness 难以检查、比较、迁移和消融。
-          本文提出一个问题：智能体 harness 的可复用设计模式，能否被表示成可执行的自然语言对象？
+          本文提出一个问题：agent harness 的可复用设计模式，能否被表示成可执行的自然语言对象？
         </p>
         <p class="abstract-text">
-          我们提出 <strong>自然语言智能体 Harness（NLAHs）</strong>——可编辑的文档，描述运行级 harness
-          策略——以及 <strong>智能体 Harness 运行时（IHR）</strong>——一个共享运行时，把这些文档解释为
-          智能体调用、交接、状态更新、验证门和产物契约。在编码、终端使用和计算机使用基准上，由 IHR
+          我们提出 <strong>自然语言 agent Harness（NLAHs）</strong>——可编辑的文档，描述运行级 harness
+          策略——以及 <strong>agent Harness 运行时（IHR）</strong>——一个共享运行时，把这些文档解释为
+          agent 调用、交接、状态更新、验证门和产物契约。在编码、终端使用和计算机使用基准上，由 IHR
           执行的 NLAH 取得了与代码实现和提示词实现相当的任务结果，同时暴露出更短的静态 harness 策略。
           模块消融进一步表明显式的 harness 模块是可分析的。
         </p>
@@ -568,12 +568,12 @@
           <div class="insight-card">
             <i class="fa-regular fa-window-maximize insight-icon"></i>
             <h3>共享运行时</h3>
-            <p>IHR 在通用语义下，跨编码、终端和 GUI 基准执行 NLAHs。</p>
+            <p>IHR 在通用语义下，跨编码、终端和 图形界面基准执行 NLAHs。</p>
           </div>
           <div class="insight-card">
             <i class="fa-regular fa-flask insight-icon"></i>
             <h3>可分析模块</h3>
-            <p>显式模块支持干净的消融——揭示到底是什么驱动了智能体的性能。</p>
+            <p>显式模块支持干净的消融——揭示到底是什么驱动了 agent 的性能。</p>
           </div>
         </div>
       </div>
@@ -583,15 +583,15 @@
     <section class="section section-alt fade-in" id="teaser-zh">
       <div class="container">
         <div class="section-label">总览</div>
-        <h2 class="section-title">控制智能体运行的三种方式</h2>
+        <h2 class="section-title">控制 agent 运行的三种方式</h2>
         <p class="section-subtitle">
           谱系从刚性代码控制到完全自主的自我 harness。NLAH+IHR 处在中间——在共享运行时下保持策略可读且可执行。
         </p>
         <figure class="figure-block figure-teaser">
-          <img src="static/img/teaser.png" alt="控制智能体运行的三种范式" class="figure-img" loading="lazy">
+          <img src="static/img/teaser.png" alt="控制 agent 运行的三种范式" class="figure-img" loading="lazy">
           <figcaption>
             <span class="fig-label">图 1</span>
-            <span class="fig-text"><strong>控制智能体运行的三种方式。</strong> 谱系从硬性外部控制（代码 Harness）到无外部 harness（自我 Harness）。NLAH+IHR 处于中间地带：harness 策略用可读的自然语言编写，而共享运行时通过子智能体调用执行该策略。</span>
+            <span class="fig-text"><strong>控制 agent 运行的三种方式。</strong> 谱系从硬性外部控制（代码 Harness）到无外部 harness（自我 Harness）。NLAH+IHR 处于中间地带：harness 策略用可读的自然语言编写，而共享运行时通过子 agent 调用执行该策略。</span>
           </figcaption>
         </figure>
       </div>
@@ -603,7 +603,7 @@
         <div class="section-label">方法</div>
         <h2 class="section-title">NLAH + IHR 框架</h2>
         <p class="section-subtitle">
-          将 harness 的<em>策略</em>与<em>机制</em>分离——这是让智能体 harness 成为可检查、可编辑、可执行对象的核心设计。
+          将 harness 的<em>策略</em>与<em>机制</em>分离——这是让 agent harness 成为可检查、可编辑、可执行对象的核心设计。
         </p>
 
         <div class="method-grid">
@@ -633,8 +633,8 @@
           <div class="method-layer">
             <div class="method-layer-num">1</div>
             <div class="method-layer-body">
-              <h3>基础智能体</h3>
-              <p>最小可执行底座——一个带终端访问权限的 LLM 循环。可以读写文件、运行进程、记录事件、启动子智能体。</p>
+              <h3>基础 agent</h3>
+              <p>最小可执行底座——一个带终端访问权限的 LLM 循环。可以读写文件、运行进程、记录事件、启动子 agent。</p>
             </div>
           </div>
         </div>
@@ -643,7 +643,7 @@
           <img src="static/img/framework.png" alt="NLAH+IHR 框架架构" class="figure-img" loading="lazy">
           <figcaption>
             <span class="fig-label">图 2</span>
-            <span class="fig-text"><strong>NLAH+IHR 框架总览。</strong> 在原生代码 harness 中，策略和机制混在晦涩的控制器代码里。NLAH+IHR 将它们分为四层：基础智能体（代码）、运行时策略宪章（固定自然语言）、NLAH 本身（可替换自然语言）和脚本/适配器（确定性代码钩子）。这种分离让 harness 策略层可以直接被检查和编辑。</span>
+            <span class="fig-text"><strong>NLAH+IHR 框架总览。</strong> 在原生代码 harness 中，策略和机制混在晦涩的控制器代码里。NLAH+IHR 将它们分为四层：基础 agent（代码）、运行时策略宪章（固定自然语言）、NLAH 本身（可替换自然语言）和脚本/适配器（确定性代码钩子）。这种分离让 harness 策略层可以直接被检查和编辑。</span>
           </figcaption>
         </figure>
       </div>
@@ -655,14 +655,14 @@
         <div class="section-label">结果</div>
         <h2 class="section-title">结果</h2>
         <p class="section-subtitle">
-          三个研究问题评估 NLAH+IHR 能否控制智能体运行、保留 harness 机制，并支持模块级分析。
+          三个研究问题评估 NLAH+IHR 能否控制 agent 运行、保留 harness 机制，并支持模块级分析。
         </p>
 
         <!-- RQ1 -->
         <div class="rq-block">
           <h3 class="rq-title">RQ1：Harness 实现</h3>
           <p class="rq-question">
-            NLAHs 能否在保持竞争力任务结果的同时，塑造可观测的智能体行为？
+            NLAHs 能否在保持竞争力任务结果的同时，塑造可观测的 agent 行为？
           </p>
           <div class="table-wrap">
             <table class="result-table">
@@ -788,9 +788,9 @@
               <tr>
                 <th></th>
                 <th>性能</th>
-                <th>智能体调用</th>
+                <th>agent 调用</th>
                 <th>性能</th>
-                <th>智能体调用</th>
+                <th>agent 调用</th>
               </tr>
             </thead>
             <tbody>
@@ -822,7 +822,7 @@
           </div>
           <div class="finding finding-warn">
             <i class="fa-regular fa-lightbulb"></i>
-            <span><strong>更多分支 ≠ 更好的控制：</strong> 多候选搜索产生了最大的拓扑变化（SWE 上 5.7 次智能体调用）但净收益为负（−1.6%）。不与接受标准对齐的额外流程层可能有害。</span>
+            <span><strong>更多分支 ≠ 更好的控制：</strong> 多候选搜索产生了最大的拓扑变化（SWE 上 5.7 次 agent 调用）但净收益为负（−1.6%）。不与接受标准对齐的额外流程层可能有害。</span>
           </div>
           <div class="finding finding-neg">
             <i class="fa-regular fa-lightbulb"></i>
@@ -847,7 +847,7 @@
           </div>
           <div class="conclusion-card">
             <div class="conclusion-num">2</div>
-            <p><strong>IHR</strong> 提供共享执行语义，把 NLAH 文本变成可审计的智能体调用、交接、状态和验证门。</p>
+            <p><strong>IHR</strong> 提供共享执行语义，把 NLAH 文本变成可审计的 agent 调用、交接、状态和验证门。</p>
           </div>
           <div class="conclusion-card">
             <div class="conclusion-num">3</div>
@@ -884,7 +884,7 @@
           <a href="https://arxiv.org/abs/2603.25723" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> arXiv</a>
           <a href="https://github.com/curated-skills/LinguaClaw" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> 代码（LinguaClaw）</a>
           <a href="https://x.com/ply_thu" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> @ply_thu</a>
-          <a href="https://zjsxply.github.io/" target="_blank" rel="noopener"><i class="fa-regular fa-user"></i> Linyue Pan</a>
+          <a href="https://zjsxply.github.io/" target="_blank" rel="noopener"><i class="fa-regular fa-user"></i> 潘林越</a>
         </div>
       </div>
     </section>

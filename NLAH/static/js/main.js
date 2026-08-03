@@ -38,7 +38,7 @@ var currentLang = 'en';
       copied:    'Copied!'
     },
     zh: {
-      title:     'NLAH：自然语言智能体 Harness',
+      title:     'NLAH：自然语言 Agent Harnesses',
       pdfTitle:  'PDF 查看器',
       download:  '下载',
       newTab:    '在新标签页打开',
