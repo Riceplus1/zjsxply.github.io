@@ -68,6 +68,7 @@
   color: var(--bg);
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
+[hidden] { display: none !important; }
 .lang-pane[hidden] { display: none !important; }
 .nav-links-set { display: flex; gap: 0.25rem; align-items: center; }
 
