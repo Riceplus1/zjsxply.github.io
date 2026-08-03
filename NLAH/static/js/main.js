@@ -17,10 +17,14 @@ var currentLang = 'en';
     en: document.getElementById('lang-en'),
     zh: document.getElementById('lang-zh')
   };
-  var navSets = {
-    en: document.getElementById('navLinksEn'),
-    zh: document.getElementById('navLinksZh')
+  var navDefs = {
+    abstract: { en: 'Abstract', zh: '摘要', enHref: '#abstract-en', zhHref: '#abstract-zh' },
+    method:   { en: 'Method',   zh: '方法', enHref: '#method-en',   zhHref: '#method-zh' },
+    results:  { en: 'Results',  zh: '结果', enHref: '#results-en',  zhHref: '#results-zh' },
+    ablation: { en: 'Ablation', zh: '消融', enHref: '#ablation-en', zhHref: '#ablation-zh' },
+    citation: { en: 'Citation', zh: '引用', enHref: '#citation-en', zhHref: '#citation-zh' }
   };
+  var navLinks = document.querySelectorAll('#navLinks a[data-nav]');
   var brand = document.getElementById('navBrand');
   var pdfCloseBtn = document.querySelector('.pdf-toolbar-actions button');
   var pdfTitleEl  = document.getElementById('pdfTitle');
@@ -56,7 +60,6 @@ var currentLang = 'en';
     Object.keys(panes).forEach(function (key) {
       var selected = key === lang;
       panes[key].hidden   = !selected;
-      navSets[key].hidden = !selected;
       buttons[key].classList.toggle('active', selected);
       buttons[key].setAttribute('aria-pressed', selected ? 'true' : 'false');
     });
@@ -64,6 +67,14 @@ var currentLang = 'en';
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     document.title = copy[lang].title;
     brand.href = lang === 'zh' ? '#hero-zh' : '#hero-en';
+
+    // Single set of nav links — swap text & href per language
+    navLinks.forEach(function (a) {
+      var d = navDefs[a.getAttribute('data-nav')];
+      if (!d) return;
+      a.textContent = d[lang];
+      a.href = lang === 'zh' ? d.zhHref : d.enHref;
+    });
 
     // Static UI strings (PDF toolbar, etc.)
     if (pdfTitleEl)  pdfTitleEl.textContent = copy[lang].pdfTitle;
